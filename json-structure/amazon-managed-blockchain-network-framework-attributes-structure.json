@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-network-framework-attributes-structure.json",
+  "name": "NetworkFrameworkAttributes",
+  "description": "Attributes relevant to the network for the blockchain framework that the network uses.",
+  "type": "object",
+  "properties": {
+    "Fabric": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkFabricAttributes"
+        },
+        {
+          "description": "Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric."
+        }
+      ]
+    },
+    "Ethereum": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkEthereumAttributes"
+        },
+        {
+          "description": "Attributes of an Ethereum network for Managed Blockchain resources participating in an Ethereum network. "
+        }
+      ]
+    }
+  }
+}

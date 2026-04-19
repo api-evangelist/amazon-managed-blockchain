@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-accessor-billing-token-string-schema.json",
+  "title": "AccessorBillingTokenString",
+  "description": "AccessorBillingTokenString schema from Amazon Managed Blockchain API",
+  "type": "string"
+}

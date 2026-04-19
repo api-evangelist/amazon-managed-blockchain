@@ -1,0 +1,16 @@
+{
+  "ProposalId": "abc12345",
+  "NetworkId": "abc12345",
+  "Description": "Example resource description",
+  "Actions": "example-value",
+  "ProposedByMemberId": "abc12345",
+  "ProposedByMemberName": "my-resource",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "ExpirationDate": "example-value",
+  "YesVoteCount": "example-value",
+  "NoVoteCount": "example-value",
+  "OutstandingVoteCount": "example-value",
+  "Tags": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

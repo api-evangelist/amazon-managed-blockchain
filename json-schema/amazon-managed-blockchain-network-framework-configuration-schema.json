@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-network-framework-configuration-schema.json",
+  "title": "NetworkFrameworkConfiguration",
+  "description": " Configuration properties relevant to the network for the blockchain framework that the network uses. ",
+  "type": "object",
+  "properties": {
+    "Fabric": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkFabricConfiguration"
+        },
+        {
+          "description": " Hyperledger Fabric configuration properties for a Managed Blockchain network that uses Hyperledger Fabric. "
+        }
+      ]
+    }
+  }
+}

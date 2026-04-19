@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-vote-summary-schema.json",
+  "title": "VoteSummary",
+  "description": "<p> Properties of an individual vote that a member cast for a proposal. </p> <p>Applies only to Hyperledger Fabric.</p>",
+  "type": "object",
+  "properties": {
+    "Vote": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoteValue"
+        },
+        {
+          "description": " The vote value, either <code>YES</code> or <code>NO</code>. "
+        }
+      ]
+    },
+    "MemberName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkMemberNameString"
+        },
+        {
+          "description": " The name of the member that cast the vote. "
+        }
+      ]
+    },
+    "MemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": " The unique identifier of the member that cast the vote. "
+        }
+      ]
+    }
+  }
+}

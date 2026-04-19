@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-delete-node-output-structure.json",
+  "name": "DeleteNodeOutput",
+  "description": "DeleteNodeOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {}
+}

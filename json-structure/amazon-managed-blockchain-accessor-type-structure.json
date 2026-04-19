@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-accessor-type-structure.json",
+  "name": "AccessorType",
+  "description": "AccessorType schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "BILLING_TOKEN"
+  ]
+}

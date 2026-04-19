@@ -1,0 +1,7 @@
+{
+  "ClientRequestToken": "example-value",
+  "MemberId": "abc12345",
+  "Actions": "example-value",
+  "Description": "Example resource description",
+  "Tags": "example-value"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-get-member-output-schema.json",
+  "title": "GetMemberOutput",
+  "description": "GetMemberOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Member": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Member"
+        },
+        {
+          "description": "The properties of a member."
+        }
+      ]
+    }
+  }
+}

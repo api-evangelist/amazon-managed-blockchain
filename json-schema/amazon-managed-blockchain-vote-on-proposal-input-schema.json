@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-vote-on-proposal-input-schema.json",
+  "title": "VoteOnProposalInput",
+  "description": "VoteOnProposalInput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "VoterMemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the member casting the vote. "
+        }
+      ]
+    },
+    "Vote": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoteValue"
+        },
+        {
+          "description": " The value of the vote. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "VoterMemberId",
+    "Vote"
+  ]
+}

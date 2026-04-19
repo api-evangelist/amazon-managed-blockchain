@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-threshold-percentage-int-structure.json",
+  "name": "ThresholdPercentageInt",
+  "description": "ThresholdPercentageInt schema from Amazon Managed Blockchain API",
+  "type": "int32",
+  "minimum": 0,
+  "maximum": 100
+}

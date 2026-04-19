@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-list-networks-output-structure.json",
+  "name": "ListNetworksOutput",
+  "description": "ListNetworksOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Networks": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkSummaryList"
+        },
+        {
+          "description": "An array of <code>NetworkSummary</code> objects that contain configuration properties for each network."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The pagination token that indicates the next set of results to retrieve."
+        }
+      ]
+    }
+  }
+}

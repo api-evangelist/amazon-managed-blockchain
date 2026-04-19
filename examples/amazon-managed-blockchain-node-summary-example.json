@@ -1,0 +1,8 @@
+{
+  "Id": "abc12345",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "AvailabilityZone": "example-value",
+  "InstanceType": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

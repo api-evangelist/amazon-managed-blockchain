@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-edition-structure.json",
+  "name": "Edition",
+  "description": "Edition schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "STARTER",
+    "STANDARD"
+  ]
+}

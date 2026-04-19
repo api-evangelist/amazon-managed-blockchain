@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-instance-type-string-schema.json",
+  "title": "InstanceTypeString",
+  "description": "InstanceTypeString schema from Amazon Managed Blockchain API",
+  "type": "string"
+}

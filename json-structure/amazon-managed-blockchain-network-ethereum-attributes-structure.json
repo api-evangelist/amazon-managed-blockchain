@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-network-ethereum-attributes-structure.json",
+  "name": "NetworkEthereumAttributes",
+  "description": "Attributes of Ethereum for a network. ",
+  "type": "object",
+  "properties": {
+    "ChainId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>The Ethereum <code>CHAIN_ID</code> associated with the Ethereum network. Chain IDs are as follows:</p> <ul> <li> <p>mainnet = <code>1</code> </p> </li> <li> <p>goerli = <code>5</code> </p> </li> <li> <p>rinkeby = <code>4</code> </p> </li> </ul>"
+        }
+      ]
+    }
+  }
+}

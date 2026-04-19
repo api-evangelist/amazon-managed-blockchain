@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-input-tag-map-schema.json",
+  "title": "InputTagMap",
+  "description": "InputTagMap schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/TagValue"
+  }
+}

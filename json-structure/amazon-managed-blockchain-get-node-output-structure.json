@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-get-node-output-structure.json",
+  "name": "GetNodeOutput",
+  "description": "GetNodeOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Node": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Node"
+        },
+        {
+          "description": "Properties of the node configuration."
+        }
+      ]
+    }
+  }
+}

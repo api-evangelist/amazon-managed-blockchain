@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-voting-policy-schema.json",
+  "title": "VotingPolicy",
+  "description": "<p> The voting rules for the network to decide if a proposal is accepted </p> <p>Applies only to Hyperledger Fabric.</p>",
+  "type": "object",
+  "properties": {
+    "ApprovalThresholdPolicy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ApprovalThresholdPolicy"
+        },
+        {
+          "description": "Defines the rules for the network for voting on proposals, such as the percentage of <code>YES</code> votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created."
+        }
+      ]
+    }
+  }
+}

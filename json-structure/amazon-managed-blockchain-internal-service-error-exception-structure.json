@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-internal-service-error-exception-structure.json",
+  "name": "InternalServiceErrorException",
+  "description": "InternalServiceErrorException schema from Amazon Managed Blockchain API"
+}

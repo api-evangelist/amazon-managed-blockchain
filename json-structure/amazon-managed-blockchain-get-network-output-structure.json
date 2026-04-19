@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-get-network-output-structure.json",
+  "name": "GetNetworkOutput",
+  "description": "GetNetworkOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Network": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Network"
+        },
+        {
+          "description": "An object containing network configuration parameters."
+        }
+      ]
+    }
+  }
+}

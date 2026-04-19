@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-proposal-schema.json",
+  "title": "Proposal",
+  "description": "<p>Properties of a proposal on a Managed Blockchain network.</p> <p>Applies only to Hyperledger Fabric.</p>",
+  "type": "object",
+  "properties": {
+    "ProposalId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the proposal."
+        }
+      ]
+    },
+    "NetworkId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the network for which the proposal is made."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DescriptionString"
+        },
+        {
+          "description": "The description of the proposal."
+        }
+      ]
+    },
+    "Actions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProposalActions"
+        },
+        {
+          "description": "The actions to perform on the network if the proposal is <code>APPROVED</code>."
+        }
+      ]
+    },
+    "ProposedByMemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the member that created the proposal."
+        }
+      ]
+    },
+    "ProposedByMemberName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkMemberNameString"
+        },
+        {
+          "description": "The name of the member that created the proposal."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProposalStatus"
+        },
+        {
+          "description": "<p>The status of the proposal. Values are as follows:</p> <ul> <li> <p> <code>IN_PROGRESS</code> - The proposal is active and open for member voting.</p> </li> <li> <p> <code>APPROVED</code> - The proposal was approved with sufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified proposal actions are carried out.</p> </li> <li> <p> <code>REJECTED</code> - The proposal was rejected with insufficient <code>YES</code> votes among members according to the <code>VotingPolicy</code> specified for the <code>Network</code>. The specified <code>ProposalActions</code> aren't carried out.</p> </li> <li> <p> <code>EXPIRED</code> - Members didn't cast the number of votes required to determine the proposal outcome before the proposal expired. The specified <code>ProposalActions</code> aren't carried out.</p> </li> <li> <p> <code>ACTION_FAILED</code> - One or more of the specified <code>ProposalActions</code> in a proposal that was approved couldn't be completed because of an error. The <code>ACTION_FAILED</code> status occurs even if only one ProposalAction fails and other actions are successful.</p> </li> </ul>"
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The date and time that the proposal was created. "
+        }
+      ]
+    },
+    "ExpirationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The date and time that the proposal expires. This is the <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is specified in the <code>ProposalThresholdPolicy</code>. After this date and time, if members haven't cast enough votes to determine the outcome according to the voting policy, the proposal is <code>EXPIRED</code> and <code>Actions</code> aren't carried out. "
+        }
+      ]
+    },
+    "YesVoteCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoteCount"
+        },
+        {
+          "description": " The current total of <code>YES</code> votes cast on the proposal by members. "
+        }
+      ]
+    },
+    "NoVoteCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoteCount"
+        },
+        {
+          "description": " The current total of <code>NO</code> votes cast on the proposal by members. "
+        }
+      ]
+    },
+    "OutstandingVoteCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoteCount"
+        },
+        {
+          "description": " The number of votes remaining to be cast on the proposal by members. In other words, the number of members minus the sum of <code>YES</code> votes and <code>NO</code> votes. "
+        }
+      ]
+    },
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutputTagMap"
+        },
+        {
+          "description": "<p>Tags assigned to the proposal. Each tag consists of a key and optional value.</p> <p>For more information about tags, see <a href=\"https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html\">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href=\"https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html\">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>"
+        }
+      ]
+    },
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ArnString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>."
+        }
+      ]
+    }
+  }
+}

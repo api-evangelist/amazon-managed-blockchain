@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-node-fabric-attributes-structure.json",
+  "name": "NodeFabricAttributes",
+  "description": "Attributes of Hyperledger Fabric for a peer node on a Hyperledger Fabric network on Managed Blockchain.",
+  "type": "object",
+  "properties": {
+    "PeerEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The endpoint that identifies the peer node for all services except peer channel-based event services."
+        }
+      ]
+    },
+    "PeerEventEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The endpoint that identifies the peer node for peer channel-based event services."
+        }
+      ]
+    }
+  }
+}

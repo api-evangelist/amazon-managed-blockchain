@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-network-fabric-configuration-structure.json",
+  "name": "NetworkFabricConfiguration",
+  "description": "Hyperledger Fabric configuration properties for the network.",
+  "type": "object",
+  "properties": {
+    "Edition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Edition"
+        },
+        {
+          "description": "The edition of Amazon Managed Blockchain that the network uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Edition"
+  ]
+}

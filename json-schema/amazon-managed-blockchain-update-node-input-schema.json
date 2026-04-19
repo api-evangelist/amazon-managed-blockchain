@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-update-node-input-schema.json",
+  "title": "UpdateNodeInput",
+  "description": "UpdateNodeInput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "MemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "<p>The unique identifier of the member that owns the node.</p> <p>Applies only to Hyperledger Fabric.</p>"
+        }
+      ]
+    },
+    "LogPublishingConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeLogPublishingConfiguration"
+        },
+        {
+          "description": "Configuration properties for publishing to Amazon CloudWatch Logs."
+        }
+      ]
+    }
+  }
+}

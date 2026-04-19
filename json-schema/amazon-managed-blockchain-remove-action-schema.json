@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-remove-action-schema.json",
+  "title": "RemoveAction",
+  "description": "<p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p> <p>Applies only to Hyperledger Fabric.</p>",
+  "type": "object",
+  "properties": {
+    "MemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the member to remove."
+        }
+      ]
+    }
+  },
+  "required": [
+    "MemberId"
+  ]
+}

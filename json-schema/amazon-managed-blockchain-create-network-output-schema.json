@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-create-network-output-schema.json",
+  "title": "CreateNetworkOutput",
+  "description": "CreateNetworkOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "NetworkId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier for the network."
+        }
+      ]
+    },
+    "MemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier for the first member within the network."
+        }
+      ]
+    }
+  }
+}

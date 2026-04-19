@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-node-summary-structure.json",
+  "name": "NodeSummary",
+  "description": "A summary of configuration properties for a node.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the node."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeStatus"
+        },
+        {
+          "description": "The status of the node."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The date and time that the node was created."
+        }
+      ]
+    },
+    "AvailabilityZone": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AvailabilityZoneString"
+        },
+        {
+          "description": "The Availability Zone in which the node exists."
+        }
+      ]
+    },
+    "InstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InstanceTypeString"
+        },
+        {
+          "description": "The EC2 instance type for the node."
+        }
+      ]
+    },
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ArnString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>."
+        }
+      ]
+    }
+  }
+}

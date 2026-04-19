@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-list-proposals-output-structure.json",
+  "name": "ListProposalsOutput",
+  "description": "ListProposalsOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Proposals": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProposalSummaryList"
+        },
+        {
+          "description": "The summary of each proposal made on the network."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The pagination token that indicates the next set of results to retrieve."
+        }
+      ]
+    }
+  }
+}

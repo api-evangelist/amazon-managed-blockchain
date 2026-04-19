@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-create-member-output-structure.json",
+  "name": "CreateMemberOutput",
+  "description": "CreateMemberOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "MemberId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the member."
+        }
+      ]
+    }
+  }
+}

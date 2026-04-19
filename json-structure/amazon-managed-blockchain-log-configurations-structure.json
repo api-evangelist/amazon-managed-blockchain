@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-log-configurations-structure.json",
+  "name": "LogConfigurations",
+  "description": "A collection of log configurations.",
+  "type": "object",
+  "properties": {
+    "Cloudwatch": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogConfiguration"
+        },
+        {
+          "description": "Parameters for publishing logs to Amazon CloudWatch Logs."
+        }
+      ]
+    }
+  }
+}

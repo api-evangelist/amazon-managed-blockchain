@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-node-log-publishing-configuration-structure.json",
+  "name": "NodeLogPublishingConfiguration",
+  "description": "Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.",
+  "type": "object",
+  "properties": {
+    "Fabric": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeFabricLogPublishingConfiguration"
+        },
+        {
+          "description": "Configuration properties for logging events associated with a node that is owned by a member of a Managed Blockchain network using the Hyperledger Fabric framework."
+        }
+      ]
+    }
+  }
+}

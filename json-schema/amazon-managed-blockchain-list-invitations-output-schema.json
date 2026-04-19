@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-list-invitations-output-schema.json",
+  "title": "ListInvitationsOutput",
+  "description": "ListInvitationsOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Invitations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InvitationList"
+        },
+        {
+          "description": "The invitations for the network."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The pagination token that indicates the next set of results to retrieve."
+        }
+      ]
+    }
+  }
+}

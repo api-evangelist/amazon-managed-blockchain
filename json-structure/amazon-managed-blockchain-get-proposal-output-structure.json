@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-get-proposal-output-structure.json",
+  "name": "GetProposalOutput",
+  "description": "GetProposalOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Proposal": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Proposal"
+        },
+        {
+          "description": "Information about a proposal."
+        }
+      ]
+    }
+  }
+}

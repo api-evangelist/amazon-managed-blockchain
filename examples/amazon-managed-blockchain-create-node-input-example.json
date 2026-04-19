@@ -1,0 +1,6 @@
+{
+  "ClientRequestToken": "example-value",
+  "MemberId": "abc12345",
+  "NodeConfiguration": "example-value",
+  "Tags": "example-value"
+}

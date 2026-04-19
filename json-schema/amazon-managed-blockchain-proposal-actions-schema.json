@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-proposal-actions-schema.json",
+  "title": "ProposalActions",
+  "description": "<p> The actions to carry out if a proposal is <code>APPROVED</code>. </p> <p>Applies only to Hyperledger Fabric.</p>",
+  "type": "object",
+  "properties": {
+    "Invitations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InviteActionList"
+        },
+        {
+          "description": " The actions to perform for an <code>APPROVED</code> proposal to invite an Amazon Web Services account to create a member and join the network. "
+        }
+      ]
+    },
+    "Removals": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RemoveActionList"
+        },
+        {
+          "description": " The actions to perform for an <code>APPROVED</code> proposal to remove a member from the network, which deletes the member and all associated member resources from the network. "
+        }
+      ]
+    }
+  }
+}

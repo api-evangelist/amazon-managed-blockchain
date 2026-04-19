@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-create-member-input-schema.json",
+  "title": "CreateMemberInput",
+  "description": "CreateMemberInput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "ClientRequestToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientRequestTokenString"
+        },
+        {
+          "description": "A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an Amazon Web Services SDK or the CLI."
+        }
+      ]
+    },
+    "InvitationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the invitation that is sent to the member to join the network."
+        }
+      ]
+    },
+    "MemberConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MemberConfiguration"
+        },
+        {
+          "description": "Member configuration parameters."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ClientRequestToken",
+    "InvitationId",
+    "MemberConfiguration"
+  ]
+}

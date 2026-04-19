@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-member-fabric-attributes-schema.json",
+  "title": "MemberFabricAttributes",
+  "description": "Attributes of Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.",
+  "type": "object",
+  "properties": {
+    "AdminUsername": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UsernameString"
+        },
+        {
+          "description": "The user name for the initial administrator user for the member."
+        }
+      ]
+    },
+    "CaEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The endpoint used to access the member's certificate authority."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-resource-not-ready-exception-structure.json",
+  "name": "ResourceNotReadyException",
+  "description": "ResourceNotReadyException schema from Amazon Managed Blockchain API"
+}

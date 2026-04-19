@@ -1,0 +1,10 @@
+{
+  "Id": "abc12345",
+  "Name": "my-resource",
+  "Description": "Example resource description",
+  "Framework": "example-value",
+  "FrameworkVersion": "example-value",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

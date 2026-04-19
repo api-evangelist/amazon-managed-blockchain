@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-member-status-schema.json",
+  "title": "MemberStatus",
+  "description": "MemberStatus schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "CREATING",
+    "AVAILABLE",
+    "CREATE_FAILED",
+    "UPDATING",
+    "DELETING",
+    "DELETED",
+    "INACCESSIBLE_ENCRYPTION_KEY"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-input-tag-map-structure.json",
+  "name": "InputTagMap",
+  "description": "InputTagMap schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/TagValue"
+  }
+}

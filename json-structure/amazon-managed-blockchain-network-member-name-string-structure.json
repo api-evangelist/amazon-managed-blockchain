@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-network-member-name-string-structure.json",
+  "name": "NetworkMemberNameString",
+  "description": "NetworkMemberNameString schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "pattern": "^(?!-|[0-9])(?!.*-$)(?!.*?--)[a-zA-Z0-9-]+$"
+}

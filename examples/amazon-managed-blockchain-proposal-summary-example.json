@@ -1,0 +1,10 @@
+{
+  "ProposalId": "abc12345",
+  "Description": "Example resource description",
+  "ProposedByMemberId": "abc12345",
+  "ProposedByMemberName": "my-resource",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "ExpirationDate": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

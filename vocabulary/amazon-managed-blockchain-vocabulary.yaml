@@ -1,0 +1,123 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Amazon Managed Blockchain"
+  description: "Vocabulary for Amazon Managed Blockchain covering network management, membership, peer nodes, and blockchain framework operations."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: managed-blockchain
+      version: "2018-09-24"
+      baseUrl: https://managedblockchain.amazonaws.com
+      status: active
+  resources:
+    - name: networks
+      apis: [managed-blockchain]
+      actions: [create, list, get, delete]
+    - name: members
+      apis: [managed-blockchain]
+      actions: [create, list, get, update, delete]
+    - name: nodes
+      apis: [managed-blockchain]
+      actions: [create, list, get, update, delete]
+    - name: proposals
+      apis: [managed-blockchain]
+      actions: [create, list, get, vote]
+    - name: invitations
+      apis: [managed-blockchain]
+      actions: [list, reject, accept]
+    - name: accessors
+      apis: [managed-blockchain]
+      actions: [create, list, get, delete]
+  actions:
+    - name: create
+      httpMethods: [POST]
+      pattern: write
+    - name: list
+      httpMethods: [GET]
+      pattern: read
+    - name: get
+      httpMethods: [GET]
+      pattern: read
+    - name: update
+      httpMethods: [PATCH]
+      pattern: write
+    - name: delete
+      httpMethods: [DELETE]
+      pattern: destructive
+    - name: vote
+      httpMethods: [POST]
+      pattern: write
+  enums:
+    network-frameworks:
+      - HYPERLEDGER_FABRIC
+      - ETHEREUM
+    network-status:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - DELETING
+      - DELETED
+    member-status:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - UPDATING
+      - DELETING
+      - DELETED
+      - INACCESSIBLE_ENCRYPTION_KEY
+    node-status:
+      - CREATING
+      - AVAILABLE
+      - UNHEALTHY
+      - CREATE_FAILED
+      - UPDATING
+      - DELETING
+      - DELETED
+      - FAILED
+      - INACCESSIBLE_ENCRYPTION_KEY
+  authentication:
+    schemes:
+      - type: aws-sigv4
+        name: AWS Signature Version 4
+        apis: [managed-blockchain]
+
+capability:
+  workflows:
+    - name: Blockchain Network Operations
+      file: capabilities/blockchain-network-operations.yaml
+      apisComposed: [managed-blockchain]
+      toolCount: 6
+      personas: [Blockchain Architect, Blockchain Developer]
+  personas:
+    - id: blockchain-architect
+      name: "Blockchain Architect"
+      workflows: [Blockchain Network Operations]
+    - id: blockchain-developer
+      name: "Blockchain Developer"
+      workflows: [Blockchain Network Operations]
+  namespaces:
+    - name: managed-blockchain
+      type: consumed
+    - name: blockchain-api
+      type: rest-exposed
+      port: 8080
+    - name: blockchain-mcp
+      type: mcp-exposed
+      port: 9090
+
+crossReference:
+  - resource: networks
+    operations: [CreateNetwork, ListNetworks, GetNetwork, DeleteNetwork]
+    workflows: [Blockchain Network Operations]
+    personas: [Blockchain Architect]
+  - resource: members
+    operations: [CreateMember, ListMembers, GetMember, UpdateMember, DeleteMember]
+    workflows: [Blockchain Network Operations]
+    personas: [Blockchain Architect, Blockchain Developer]
+  - resource: nodes
+    operations: [CreateNode, ListNodes, GetNode, UpdateNode, DeleteNode]
+    workflows: [Blockchain Network Operations]
+    personas: [Blockchain Developer]

@@ -1,0 +1,9 @@
+{
+  "Id": "abc12345",
+  "Type": "example-value",
+  "BillingToken": "example-value",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id",
+  "Tags": "example-value"
+}

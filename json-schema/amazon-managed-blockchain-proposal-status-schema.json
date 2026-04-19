@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-proposal-status-schema.json",
+  "title": "ProposalStatus",
+  "description": "ProposalStatus schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "IN_PROGRESS",
+    "APPROVED",
+    "REJECTED",
+    "EXPIRED",
+    "ACTION_FAILED"
+  ]
+}

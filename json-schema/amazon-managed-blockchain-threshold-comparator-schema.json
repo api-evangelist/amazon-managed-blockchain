@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-threshold-comparator-schema.json",
+  "title": "ThresholdComparator",
+  "description": "ThresholdComparator schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "GREATER_THAN",
+    "GREATER_THAN_OR_EQUAL_TO"
+  ]
+}

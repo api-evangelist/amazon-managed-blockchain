@@ -1,0 +1,11 @@
+{
+  "ClientRequestToken": "example-value",
+  "Name": "my-resource",
+  "Description": "Example resource description",
+  "Framework": "example-value",
+  "FrameworkVersion": "example-value",
+  "FrameworkConfiguration": "example-value",
+  "VotingPolicy": "example-value",
+  "MemberConfiguration": "example-value",
+  "Tags": "example-value"
+}

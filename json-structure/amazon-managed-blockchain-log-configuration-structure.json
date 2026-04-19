@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-log-configuration-structure.json",
+  "name": "LogConfiguration",
+  "description": "A configuration for logging events.",
+  "type": "object",
+  "properties": {
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Enabled"
+        },
+        {
+          "description": "Indicates whether logging is enabled."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ambc": "https://ambc.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Accessor": "ambc:Accessor",
+    "AccessorSummary": "ambc:AccessorSummary",
+    "ApprovalThresholdPolicy": "ambc:ApprovalThresholdPolicy",
+    "CreateAccessorInput": "ambc:CreateAccessorInput",
+    "CreateAccessorOutput": "ambc:CreateAccessorOutput",
+    "CreateMemberInput": "ambc:CreateMemberInput",
+    "CreateMemberOutput": "ambc:CreateMemberOutput",
+    "CreateNetworkInput": "ambc:CreateNetworkInput",
+    "CreateNetworkOutput": "ambc:CreateNetworkOutput",
+    "CreateNodeInput": "ambc:CreateNodeInput",
+    "CreateNodeOutput": "ambc:CreateNodeOutput",
+    "CreateProposalInput": "ambc:CreateProposalInput",
+    "CreateProposalOutput": "ambc:CreateProposalOutput",
+    "DeleteAccessorInput": "ambc:DeleteAccessorInput",
+    "DeleteAccessorOutput": "ambc:DeleteAccessorOutput",
+    "DeleteMemberInput": "ambc:DeleteMemberInput",
+    "DeleteMemberOutput": "ambc:DeleteMemberOutput",
+    "DeleteNodeInput": "ambc:DeleteNodeInput",
+    "DeleteNodeOutput": "ambc:DeleteNodeOutput",
+    "GetAccessorInput": "ambc:GetAccessorInput",
+    "GetAccessorOutput": "ambc:GetAccessorOutput",
+    "GetMemberInput": "ambc:GetMemberInput",
+    "GetMemberOutput": "ambc:GetMemberOutput",
+    "GetNetworkInput": "ambc:GetNetworkInput",
+    "GetNetworkOutput": "ambc:GetNetworkOutput",
+    "GetNodeInput": "ambc:GetNodeInput",
+    "GetNodeOutput": "ambc:GetNodeOutput",
+    "GetProposalInput": "ambc:GetProposalInput",
+    "GetProposalOutput": "ambc:GetProposalOutput",
+    "InputTagMap": "ambc:InputTagMap",
+    "Invitation": "ambc:Invitation",
+    "InviteAction": "ambc:InviteAction",
+    "ListAccessorsInput": "ambc:ListAccessorsInput",
+    "ListAccessorsOutput": "ambc:ListAccessorsOutput",
+    "ListInvitationsInput": "ambc:ListInvitationsInput",
+    "ListInvitationsOutput": "ambc:ListInvitationsOutput",
+    "ListMembersInput": "ambc:ListMembersInput",
+    "ListMembersOutput": "ambc:ListMembersOutput",
+    "ListNetworksInput": "ambc:ListNetworksInput",
+    "ListNetworksOutput": "ambc:ListNetworksOutput",
+    "ListNodesInput": "ambc:ListNodesInput",
+    "ListNodesOutput": "ambc:ListNodesOutput",
+    "ListProposalVotesInput": "ambc:ListProposalVotesInput",
+    "ListProposalVotesOutput": "ambc:ListProposalVotesOutput",
+    "ListProposalsInput": "ambc:ListProposalsInput",
+    "ListProposalsOutput": "ambc:ListProposalsOutput",
+    "ListTagsForResourceRequest": "ambc:ListTagsForResourceRequest",
+    "ListTagsForResourceResponse": "ambc:ListTagsForResourceResponse",
+    "LogConfiguration": "ambc:LogConfiguration",
+    "LogConfigurations": "ambc:LogConfigurations",
+    "Member": "ambc:Member",
+    "MemberConfiguration": "ambc:MemberConfiguration",
+    "MemberFabricAttributes": "ambc:MemberFabricAttributes",
+    "MemberFabricConfiguration": "ambc:MemberFabricConfiguration",
+    "MemberFabricLogPublishingConfiguration": "ambc:MemberFabricLogPublishingConfiguration",
+    "MemberFrameworkAttributes": "ambc:MemberFrameworkAttributes",
+    "MemberFrameworkConfiguration": "ambc:MemberFrameworkConfiguration",
+    "MemberLogPublishingConfiguration": "ambc:MemberLogPublishingConfiguration",
+    "MemberSummary": "ambc:MemberSummary",
+    "Network": "ambc:Network",
+    "NetworkEthereumAttributes": "ambc:NetworkEthereumAttributes",
+    "NetworkFabricAttributes": "ambc:NetworkFabricAttributes",
+    "NetworkFabricConfiguration": "ambc:NetworkFabricConfiguration",
+    "NetworkFrameworkAttributes": "ambc:NetworkFrameworkAttributes",
+    "NetworkFrameworkConfiguration": "ambc:NetworkFrameworkConfiguration",
+    "NetworkSummary": "ambc:NetworkSummary",
+    "Node": "ambc:Node",
+    "NodeConfiguration": "ambc:NodeConfiguration",
+    "NodeEthereumAttributes": "ambc:NodeEthereumAttributes",
+    "NodeFabricAttributes": "ambc:NodeFabricAttributes",
+    "NodeFabricLogPublishingConfiguration": "ambc:NodeFabricLogPublishingConfiguration",
+    "NodeFrameworkAttributes": "ambc:NodeFrameworkAttributes",
+    "NodeLogPublishingConfiguration": "ambc:NodeLogPublishingConfiguration",
+    "NodeSummary": "ambc:NodeSummary",
+    "OutputTagMap": "ambc:OutputTagMap",
+    "Proposal": "ambc:Proposal",
+    "ProposalActions": "ambc:ProposalActions",
+    "ProposalSummary": "ambc:ProposalSummary",
+    "RejectInvitationInput": "ambc:RejectInvitationInput",
+    "RejectInvitationOutput": "ambc:RejectInvitationOutput",
+    "RemoveAction": "ambc:RemoveAction",
+    "TagResourceRequest": "ambc:TagResourceRequest",
+    "TagResourceResponse": "ambc:TagResourceResponse",
+    "UntagResourceRequest": "ambc:UntagResourceRequest",
+    "UntagResourceResponse": "ambc:UntagResourceResponse",
+    "UpdateMemberInput": "ambc:UpdateMemberInput",
+    "UpdateMemberOutput": "ambc:UpdateMemberOutput",
+    "UpdateNodeInput": "ambc:UpdateNodeInput",
+    "UpdateNodeOutput": "ambc:UpdateNodeOutput",
+    "VoteOnProposalInput": "ambc:VoteOnProposalInput",
+    "VoteOnProposalOutput": "ambc:VoteOnProposalOutput",
+    "VoteSummary": "ambc:VoteSummary",
+    "VotingPolicy": "ambc:VotingPolicy",
+    "AccessorId": {
+      "@id": "ambc:AccessorId"
+    },
+    "AccessorType": {
+      "@id": "ambc:AccessorType"
+    },
+    "Accessors": {
+      "@id": "ambc:Accessors"
+    },
+    "Actions": {
+      "@id": "ambc:Actions"
+    },
+    "AdminPassword": {
+      "@id": "ambc:AdminPassword"
+    },
+    "AdminUsername": {
+      "@id": "ambc:AdminUsername"
+    },
+    "Arn": {
+      "@id": "ambc:Arn"
+    },
+    "AvailabilityZone": {
+      "@id": "ambc:AvailabilityZone"
+    },
+    "BillingToken": {
+      "@id": "ambc:BillingToken"
+    },
+    "CaEndpoint": {
+      "@id": "ambc:CaEndpoint"
+    },
+    "CaLogs": {
+      "@id": "ambc:CaLogs"
+    },
+    "ChainId": {
+      "@id": "ambc:ChainId"
+    },
+    "ChaincodeLogs": {
+      "@id": "ambc:ChaincodeLogs"
+    },
+    "ClientRequestToken": {
+      "@id": "ambc:ClientRequestToken"
+    },
+    "Cloudwatch": {
+      "@id": "ambc:Cloudwatch"
+    },
+    "CreationDate": {
+      "@id": "ambc:CreationDate"
+    },
+    "Description": {
+      "@id": "ambc:Description"
+    },
+    "Edition": {
+      "@id": "ambc:Edition"
+    },
+    "Enabled": {
+      "@id": "ambc:Enabled"
+    },
+    "Ethereum": {
+      "@id": "ambc:Ethereum"
+    },
+    "ExpirationDate": {
+      "@id": "ambc:ExpirationDate"
+    },
+    "Fabric": {
+      "@id": "ambc:Fabric"
+    },
+    "Framework": {
+      "@id": "ambc:Framework"
+    },
+    "FrameworkAttributes": {
+      "@id": "ambc:FrameworkAttributes"
+    },
+    "FrameworkConfiguration": {
+      "@id": "ambc:FrameworkConfiguration"
+    },
+    "FrameworkVersion": {
+      "@id": "ambc:FrameworkVersion"
+    },
+    "HttpEndpoint": {
+      "@id": "ambc:HttpEndpoint"
+    },
+    "Id": {
+      "@id": "ambc:Id"
+    },
+    "InstanceType": {
+      "@id": "ambc:InstanceType"
+    },
+    "InvitationId": {
+      "@id": "ambc:InvitationId"
+    },
+    "Invitations": {
+      "@id": "ambc:Invitations"
+    },
+    "IsOwned": {
+      "@id": "ambc:IsOwned"
+    },
+    "KmsKeyArn": {
+      "@id": "ambc:KmsKeyArn"
+    },
+    "LogPublishingConfiguration": {
+      "@id": "ambc:LogPublishingConfiguration"
+    },
+    "MemberId": {
+      "@id": "ambc:MemberId"
+    },
+    "MemberName": {
+      "@id": "ambc:MemberName"
+    },
+    "Members": {
+      "@id": "ambc:Members"
+    },
+    "Name": {
+      "@id": "ambc:Name"
+    },
+    "NetworkId": {
+      "@id": "ambc:NetworkId"
+    },
+    "Networks": {
+      "@id": "ambc:Networks"
+    },
+    "NextToken": {
+      "@id": "ambc:NextToken"
+    },
+    "NoVoteCount": {
+      "@id": "ambc:NoVoteCount"
+    },
+    "NodeId": {
+      "@id": "ambc:NodeId"
+    },
+    "Nodes": {
+      "@id": "ambc:Nodes"
+    },
+    "OrderingServiceEndpoint": {
+      "@id": "ambc:OrderingServiceEndpoint"
+    },
+    "OutstandingVoteCount": {
+      "@id": "ambc:OutstandingVoteCount"
+    },
+    "PeerEndpoint": {
+      "@id": "ambc:PeerEndpoint"
+    },
+    "PeerEventEndpoint": {
+      "@id": "ambc:PeerEventEndpoint"
+    },
+    "PeerLogs": {
+      "@id": "ambc:PeerLogs"
+    },
+    "Principal": {
+      "@id": "ambc:Principal"
+    },
+    "ProposalDurationInHours": {
+      "@id": "ambc:ProposalDurationInHours"
+    },
+    "ProposalId": {
+      "@id": "ambc:ProposalId"
+    },
+    "ProposalVotes": {
+      "@id": "ambc:ProposalVotes"
+    },
+    "Proposals": {
+      "@id": "ambc:Proposals"
+    },
+    "ProposedByMemberId": {
+      "@id": "ambc:ProposedByMemberId"
+    },
+    "ProposedByMemberName": {
+      "@id": "ambc:ProposedByMemberName"
+    },
+    "Removals": {
+      "@id": "ambc:Removals"
+    },
+    "StateDB": {
+      "@id": "ambc:StateDB"
+    },
+    "Status": {
+      "@id": "ambc:Status"
+    },
+    "Tags": {
+      "@id": "ambc:Tags"
+    },
+    "ThresholdComparator": {
+      "@id": "ambc:ThresholdComparator"
+    },
+    "ThresholdPercentage": {
+      "@id": "ambc:ThresholdPercentage"
+    },
+    "Type": {
+      "@id": "ambc:Type"
+    },
+    "Vote": {
+      "@id": "ambc:Vote"
+    },
+    "VoterMemberId": {
+      "@id": "ambc:VoterMemberId"
+    },
+    "VpcEndpointServiceName": {
+      "@id": "ambc:VpcEndpointServiceName"
+    },
+    "WebSocketEndpoint": {
+      "@id": "ambc:WebSocketEndpoint"
+    },
+    "YesVoteCount": {
+      "@id": "ambc:YesVoteCount"
+    }
+  }
+}

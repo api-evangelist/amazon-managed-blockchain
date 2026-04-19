@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-update-node-output-structure.json",
+  "name": "UpdateNodeOutput",
+  "description": "UpdateNodeOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {}
+}

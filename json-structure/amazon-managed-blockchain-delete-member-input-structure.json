@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-delete-member-input-structure.json",
+  "name": "DeleteMemberInput",
+  "description": "DeleteMemberInput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {}
+}

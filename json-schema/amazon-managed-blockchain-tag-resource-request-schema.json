@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-tag-resource-request-schema.json",
+  "title": "TagResourceRequest",
+  "description": "TagResourceRequest schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InputTagMap"
+        },
+        {
+          "description": "The tags to assign to the specified resource. Tag values can be empty, for example, <code>\"MyTagKey\" : \"\"</code>. You can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Tags"
+  ]
+}

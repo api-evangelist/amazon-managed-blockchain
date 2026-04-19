@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-network-schema.json",
+  "title": "Network",
+  "description": "Network configuration properties.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the network."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NameString"
+        },
+        {
+          "description": "The name of the network."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DescriptionString"
+        },
+        {
+          "description": "Attributes of the blockchain framework for the network."
+        }
+      ]
+    },
+    "Framework": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Framework"
+        },
+        {
+          "description": "The blockchain framework that the network uses."
+        }
+      ]
+    },
+    "FrameworkVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FrameworkVersionString"
+        },
+        {
+          "description": "The version of the blockchain framework that the network uses."
+        }
+      ]
+    },
+    "FrameworkAttributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkFrameworkAttributes"
+        },
+        {
+          "description": "Attributes of the blockchain framework that the network uses."
+        }
+      ]
+    },
+    "VpcEndpointServiceName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The VPC endpoint service name of the VPC endpoint service of the network. Members use the VPC endpoint service name to create a VPC endpoint to access network resources."
+        }
+      ]
+    },
+    "VotingPolicy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VotingPolicy"
+        },
+        {
+          "description": "The voting rules that the network uses to decide if a proposal is accepted."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworkStatus"
+        },
+        {
+          "description": "The current status of the network."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The date and time that the network was created."
+        }
+      ]
+    },
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutputTagMap"
+        },
+        {
+          "description": "<p>Tags assigned to the network. Each tag consists of a key and optional value.</p> <p>For more information about tags, see <a href=\"https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html\">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href=\"https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html\">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>"
+        }
+      ]
+    },
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ArnString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>."
+        }
+      ]
+    }
+  }
+}

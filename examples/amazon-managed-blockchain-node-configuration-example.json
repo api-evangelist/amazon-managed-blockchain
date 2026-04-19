@@ -1,0 +1,6 @@
+{
+  "InstanceType": "example-value",
+  "AvailabilityZone": "example-value",
+  "LogPublishingConfiguration": "example-value",
+  "StateDB": "example-value"
+}

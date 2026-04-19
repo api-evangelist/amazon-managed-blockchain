@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-get-accessor-output-schema.json",
+  "title": "GetAccessorOutput",
+  "description": "GetAccessorOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Accessor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Accessor"
+        },
+        {
+          "description": "The properties of the accessor."
+        }
+      ]
+    }
+  }
+}

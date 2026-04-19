@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-list-tags-for-resource-response-schema.json",
+  "title": "ListTagsForResourceResponse",
+  "description": "ListTagsForResourceResponse schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutputTagMap"
+        },
+        {
+          "description": "The tags assigned to the resource."
+        }
+      ]
+    }
+  }
+}

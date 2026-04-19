@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-accessor-summary-structure.json",
+  "name": "AccessorSummary",
+  "description": "A summary of accessor properties.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the accessor."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AccessorType"
+        },
+        {
+          "description": "<p>The type of the accessor.</p> <note> <p>Currently accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>"
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AccessorStatus"
+        },
+        {
+          "description": "The current status of the accessor."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The creation date and time of the accessor."
+        }
+      ]
+    },
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ArnString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>."
+        }
+      ]
+    }
+  }
+}

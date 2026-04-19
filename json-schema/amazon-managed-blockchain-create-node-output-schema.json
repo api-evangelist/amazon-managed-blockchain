@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-create-node-output-schema.json",
+  "title": "CreateNodeOutput",
+  "description": "CreateNodeOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "NodeId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the node."
+        }
+      ]
+    }
+  }
+}

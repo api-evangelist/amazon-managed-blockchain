@@ -1,0 +1,157 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon Managed Blockchain - Network Operations"
+  description: "Workflow capability for blockchain architects and developers to create and manage Hyperledger Fabric and Ethereum networks, members, peer nodes, and proposals on Amazon Managed Blockchain."
+  tags:
+    - Amazon
+    - Blockchain
+    - Hyperledger Fabric
+    - Ethereum
+    - Distributed Ledger
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - import: managed-blockchain
+      location: ./shared/managed-blockchain.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: blockchain-api
+      description: "Unified REST API for Amazon Managed Blockchain operations."
+      resources:
+        - path: /v1/networks
+          name: networks
+          description: "Blockchain networks"
+          operations:
+            - method: GET
+              name: list-networks
+              description: "List blockchain networks"
+              call: "managed-blockchain.list-networks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-network
+              description: "Create a blockchain network"
+              call: "managed-blockchain.create-network"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/networks/{id}/members
+          name: members
+          description: "Network members"
+          operations:
+            - method: GET
+              name: list-members
+              description: "List members"
+              call: "managed-blockchain.list-members"
+              with:
+                networkId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-member
+              description: "Create a member"
+              call: "managed-blockchain.create-member"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/networks/{id}/nodes
+          name: nodes
+          description: "Peer nodes"
+          operations:
+            - method: GET
+              name: list-nodes
+              description: "List peer nodes"
+              call: "managed-blockchain.list-nodes"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-node
+              description: "Create a peer node"
+              call: "managed-blockchain.create-node"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: blockchain-mcp
+      transport: http
+      description: "MCP server for AI-assisted blockchain network operations."
+      tools:
+        - name: list-blockchain-networks
+          description: "List all Amazon Managed Blockchain networks"
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "managed-blockchain.list-networks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-blockchain-network
+          description: "Create a new Hyperledger Fabric or Ethereum blockchain network"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "managed-blockchain.create-network"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-network-members
+          description: "List all members of a blockchain network"
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "managed-blockchain.list-members"
+          with:
+            networkId: "tools.networkId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: invite-network-member
+          description: "Invite an AWS account to join a blockchain network as a member"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "managed-blockchain.create-member"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-peer-nodes
+          description: "List all peer nodes in a blockchain network"
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "managed-blockchain.list-nodes"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-peer-node
+          description: "Create a peer node to participate in a blockchain network"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "managed-blockchain.create-node"
+          outputParameters:
+            - type: object
+              mapping: "$."

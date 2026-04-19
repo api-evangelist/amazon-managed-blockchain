@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-invitation-status-structure.json",
+  "name": "InvitationStatus",
+  "description": "InvitationStatus schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "PENDING",
+    "ACCEPTED",
+    "ACCEPTING",
+    "REJECTED",
+    "EXPIRED"
+  ]
+}

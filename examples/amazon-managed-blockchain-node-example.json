@@ -1,0 +1,15 @@
+{
+  "NetworkId": "abc12345",
+  "MemberId": "abc12345",
+  "Id": "abc12345",
+  "InstanceType": "example-value",
+  "AvailabilityZone": "example-value",
+  "FrameworkAttributes": "example-value",
+  "LogPublishingConfiguration": "example-value",
+  "StateDB": "example-value",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "Tags": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id",
+  "KmsKeyArn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

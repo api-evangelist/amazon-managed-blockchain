@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-network-status-structure.json",
+  "name": "NetworkStatus",
+  "description": "NetworkStatus schema from Amazon Managed Blockchain API",
+  "type": "string",
+  "enum": [
+    "CREATING",
+    "AVAILABLE",
+    "CREATE_FAILED",
+    "DELETING",
+    "DELETED"
+  ]
+}

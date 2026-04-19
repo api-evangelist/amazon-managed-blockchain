@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-node-configuration-schema.json",
+  "title": "NodeConfiguration",
+  "description": "Configuration properties of a node.",
+  "type": "object",
+  "properties": {
+    "InstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InstanceTypeString"
+        },
+        {
+          "description": "The Amazon Managed Blockchain instance type for the node."
+        }
+      ]
+    },
+    "AvailabilityZone": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AvailabilityZoneString"
+        },
+        {
+          "description": "The Availability Zone in which the node exists. Required for Ethereum nodes. "
+        }
+      ]
+    },
+    "LogPublishingConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeLogPublishingConfiguration"
+        },
+        {
+          "description": "Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain. "
+        }
+      ]
+    },
+    "StateDB": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StateDBType"
+        },
+        {
+          "description": "<p>The state database that the node uses. Values are <code>LevelDB</code> or <code>CouchDB</code>. When using an Amazon Managed Blockchain network with Hyperledger Fabric version 1.4 or later, the default is <code>CouchDB</code>.</p> <p>Applies only to Hyperledger Fabric.</p>"
+        }
+      ]
+    }
+  },
+  "required": [
+    "InstanceType"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "NetworkId": "abc12345",
+  "Id": "abc12345",
+  "Name": "my-resource",
+  "Description": "Example resource description",
+  "FrameworkAttributes": "example-value",
+  "LogPublishingConfiguration": "example-value",
+  "Status": "ACTIVE",
+  "CreationDate": "example-value",
+  "Tags": "example-value",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/id",
+  "KmsKeyArn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

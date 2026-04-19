@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-update-member-input-schema.json",
+  "title": "UpdateMemberInput",
+  "description": "UpdateMemberInput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "LogPublishingConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MemberLogPublishingConfiguration"
+        },
+        {
+          "description": "Configuration properties for publishing to Amazon CloudWatch Logs."
+        }
+      ]
+    }
+  }
+}

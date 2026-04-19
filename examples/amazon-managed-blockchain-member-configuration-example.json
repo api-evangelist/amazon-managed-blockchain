@@ -1,0 +1,8 @@
+{
+  "Name": "my-resource",
+  "Description": "Example resource description",
+  "FrameworkConfiguration": "example-value",
+  "LogPublishingConfiguration": "example-value",
+  "Tags": "example-value",
+  "KmsKeyArn": "arn:aws:service:us-east-1:123456789012:resource/id"
+}

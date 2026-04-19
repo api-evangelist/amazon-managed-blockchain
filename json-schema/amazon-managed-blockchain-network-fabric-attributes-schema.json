@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-network-fabric-attributes-schema.json",
+  "title": "NetworkFabricAttributes",
+  "description": "Attributes of Hyperledger Fabric for a network.",
+  "type": "object",
+  "properties": {
+    "OrderingServiceEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The endpoint of the ordering service for the network."
+        }
+      ]
+    },
+    "Edition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Edition"
+        },
+        {
+          "description": "The edition of Amazon Managed Blockchain that Hyperledger Fabric uses. For more information, see <a href=\"http://aws.amazon.com/managed-blockchain/pricing/\">Amazon Managed Blockchain Pricing</a>."
+        }
+      ]
+    }
+  }
+}

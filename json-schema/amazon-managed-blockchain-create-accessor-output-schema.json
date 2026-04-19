@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-schema/amazon-managed-blockchain-create-accessor-output-schema.json",
+  "title": "CreateAccessorOutput",
+  "description": "CreateAccessorOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "AccessorId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResourceIdString"
+        },
+        {
+          "description": "The unique identifier of the accessor."
+        }
+      ]
+    },
+    "BillingToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AccessorBillingTokenString"
+        },
+        {
+          "description": "The billing token is a property of the Accessor. Use this token to make Ethereum API calls to your Ethereum node. The billing token is used to track your accessor object for billing Ethereum API requests made to your Ethereum nodes."
+        }
+      ]
+    }
+  }
+}

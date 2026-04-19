@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/json-structure/amazon-managed-blockchain-get-accessor-output-structure.json",
+  "name": "GetAccessorOutput",
+  "description": "GetAccessorOutput schema from Amazon Managed Blockchain API",
+  "type": "object",
+  "properties": {
+    "Accessor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Accessor"
+        },
+        {
+          "description": "The properties of the accessor."
+        }
+      ]
+    }
+  }
+}
