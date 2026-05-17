@@ -47,7 +47,7 @@ apis:
         url: https://aws.amazon.com/managed-blockchain/faqs/
       - type: JSONSchema
         url: json-schema/amazon-managed-blockchain-network-schema.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/amazon-managed-blockchain-context.jsonld
 common:
   - type: Portal
