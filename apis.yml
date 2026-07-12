@@ -47,6 +47,14 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/amazon-managed-blockchain.yaml
 common:
+- type: TrustCenter
+  url: security/amazon-managed-blockchain-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-managed-blockchain-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-managed-blockchain-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-managed-blockchain-authentication.yml
 - type: Portal
   url: https://aws.amazon.com/managed-blockchain/
 - type: Documentation
