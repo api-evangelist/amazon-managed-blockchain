@@ -47,6 +47,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/amazon-managed-blockchain.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/amazon-managed-blockchain-agentic-access.yml
 - type: TrustCenter
   url: security/amazon-managed-blockchain-trust-center.yml
 - type: VulnerabilityDisclosure
