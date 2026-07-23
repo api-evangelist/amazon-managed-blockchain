@@ -1,0 +1,582 @@
+openapi: 3.0.0
+info:
+  version: '2018-09-24'
+  x-release: v4
+  title: Amazon Managed Blockchain Accessors API
+  description: <p/> <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open-source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority.</p> <p>Managed Blockchain supports the Hyperledger Fabric and Ethereum open-source frameworks. Because of fundamental differences between the frameworks, some API actions or data types may only apply in the context of one framework and not the other. For example, actions related to Hyperledger Fabric network members such as <code>CreateMember</code> and <code>DeleteMember</code> don't apply to Ethereum.</p> <p>The description for each action indicates the framework or frameworks to which it applies. Data types and properties that apply only in the context of a particular framework are similarly indicated.</p>
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: managedblockchain
+  x-aws-signingName: managedblockchain
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/managedblockchain-2018-09-24.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://managedblockchain.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The ManagedBlockchain multi-region endpoint
+- url: https://managedblockchain.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The ManagedBlockchain multi-region endpoint
+- url: http://managedblockchain.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The ManagedBlockchain endpoint for China (Beijing) and China (Ningxia)
+- url: https://managedblockchain.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The ManagedBlockchain endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Accessors
+paths:
+  /accessors:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateAccessor
+      description: Creates a new accessor for use with Managed Blockchain Ethereum nodes. An accessor contains information required for token based access to your Ethereum nodes.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAccessorOutput'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '482':
+          description: ResourceAlreadyExistsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAlreadyExistsException'
+        '483':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '484':
+          description: ResourceLimitExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceLimitExceededException'
+        '485':
+          description: InternalServiceErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceErrorException'
+        '486':
+          description: TooManyTagsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyTagsException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ClientRequestToken
+              - AccessorType
+              properties:
+                ClientRequestToken:
+                  description: This is a unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than once. This identifier is required only if you make a service request directly using an HTTP client. It is generated automatically if you use an Amazon Web Services SDK or the Amazon Web Services CLI.
+                  type: string
+                  minLength: 1
+                  maxLength: 64
+                AccessorType:
+                  description: <p>The type of accessor.</p> <note> <p>Currently, accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>
+                  type: string
+                  enum:
+                  - BILLING_TOKEN
+                Tags:
+                  description: <p>Tags to assign to the Accessor.</p> <p> Each tag consists of a key and an optional value. You can specify multiple key-value pairs in a single request with an overall maximum of 50 tags allowed per resource.</p> <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+                  type: object
+                  minProperties: 0
+                  maxProperties: 50
+                  additionalProperties:
+                    $ref: '#/components/schemas/TagValue'
+      summary: Amazon Managed Blockchain Create Accessor
+      tags:
+      - Accessors
+    get:
+      operationId: ListAccessors
+      description: Returns a list of the accessors and their properties. Accessor objects are containers that have the information required for token based access to your Ethereum nodes.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAccessorsOutput'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '483':
+          description: InternalServiceErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceErrorException'
+      parameters:
+      - name: maxResults
+        in: query
+        required: false
+        description: ' The maximum number of accessors to list.'
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 50
+      - name: nextToken
+        in: query
+        required: false
+        description: ' The pagination token that indicates the next set of results to retrieve. '
+        schema:
+          type: string
+          maxLength: 128
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      summary: Amazon Managed Blockchain List Accessors
+      tags:
+      - Accessors
+  /accessors/{AccessorId}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    delete:
+      operationId: DeleteAccessor
+      description: Deletes an accessor that your Amazon Web Services account owns. An accessor object is a container that has the information required for token based access to your Ethereum nodes including, the <code>BILLING_TOKEN</code>. After an accessor is deleted, the status of the accessor changes from <code>AVAILABLE</code> to <code>PENDING_DELETION</code>. An accessor in the <code>PENDING_DELETION</code> state can’t be used for new WebSocket requests or HTTP requests. However, WebSocket connections that were initiated while the accessor was in the <code>AVAILABLE</code> state remain open until they expire (up to 2 hours).
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAccessorOutput'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '484':
+          description: InternalServiceErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceErrorException'
+      parameters:
+      - name: AccessorId
+        in: path
+        required: true
+        description: The unique identifier of the accessor.
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 32
+      summary: Amazon Managed Blockchain Delete Accessor
+      tags:
+      - Accessors
+    get:
+      operationId: GetAccessor
+      description: Returns detailed information about an accessor. An accessor object is a container that has the information required for token based access to your Ethereum nodes.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccessorOutput'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '484':
+          description: InternalServiceErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceErrorException'
+      parameters:
+      - name: AccessorId
+        in: path
+        required: true
+        description: The unique identifier of the accessor.
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 32
+      summary: Amazon Managed Blockchain Get Accessor
+      tags:
+      - Accessors
+components:
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    ListAccessorsOutput:
+      type: object
+      properties:
+        Accessors:
+          allOf:
+          - $ref: '#/components/schemas/AccessorSummaryList'
+          - description: An array of AccessorSummary objects that contain configuration properties for each accessor.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: ' The pagination token that indicates the next set of results to retrieve. '
+    GetAccessorOutput:
+      type: object
+      properties:
+        Accessor:
+          allOf:
+          - $ref: '#/components/schemas/Accessor'
+          - description: The properties of the accessor.
+    AccessorSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccessorSummary'
+    ResourceAlreadyExistsException: {}
+    InternalServiceErrorException: {}
+    ResourceIdString:
+      type: string
+      minLength: 1
+      maxLength: 32
+    ArnString:
+      type: string
+      pattern: ^arn:.+:.+:.+:.+:.+
+      minLength: 1
+      maxLength: 1011
+    AccessDeniedException: {}
+    OutputTagMap:
+      type: object
+      minProperties: 0
+      maxProperties: 200
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
+    ResourceLimitExceededException: {}
+    ResourceNotFoundException: {}
+    DeleteAccessorOutput:
+      type: object
+      properties: {}
+    AccessorSummary:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the accessor.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/AccessorType'
+          - description: <p>The type of the accessor.</p> <note> <p>Currently accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/AccessorStatus'
+          - description: The current status of the accessor.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The creation date and time of the accessor.
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+      description: A summary of accessor properties.
+    AccessorType:
+      type: string
+      enum:
+      - BILLING_TOKEN
+    Accessor:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the accessor.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/AccessorType'
+          - description: <p>The type of the accessor.</p> <note> <p>Currently, accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>
+        BillingToken:
+          allOf:
+          - $ref: '#/components/schemas/AccessorBillingTokenString'
+          - description: The billing token is a property of the accessor. Use this token to make Ethereum API calls to your Ethereum node. The billing token is used to track your accessor object for billing Ethereum API requests made to your Ethereum nodes.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/AccessorStatus'
+          - description: The current status of the accessor.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The creation date and time of the accessor.
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/OutputTagMap'
+          - description: <p>The tags assigned to the Accessor.</p> <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+      description: The properties of the Accessor.
+    ThrottlingException: {}
+    TooManyTagsException: {}
+    PaginationToken:
+      type: string
+      maxLength: 128
+    AccessorStatus:
+      type: string
+      enum:
+      - AVAILABLE
+      - PENDING_DELETION
+      - DELETED
+    InvalidRequestException: {}
+    CreateAccessorOutput:
+      type: object
+      properties:
+        AccessorId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the accessor.
+        BillingToken:
+          allOf:
+          - $ref: '#/components/schemas/AccessorBillingTokenString'
+          - description: The billing token is a property of the Accessor. Use this token to make Ethereum API calls to your Ethereum node. The billing token is used to track your accessor object for billing Ethereum API requests made to your Ethereum nodes.
+    Timestamp:
+      type: string
+      format: date-time
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    AccessorBillingTokenString:
+      type: string
+      minLength: 42
+      maxLength: 42
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/managedblockchain/
+x-hasEquivalentPaths: true
