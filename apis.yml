@@ -5,7 +5,20 @@ description: Amazon Managed Blockchain is a fully managed service that allows yo
   to create the network or join a public network, and automatically scales to meet the demands of thousands of applications
   running millions of transactions.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-managed-blockchain.png
 tags:
 - AWS
 - Blockchain
@@ -17,23 +30,90 @@ created: '2024-01-15'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: amazon-managed-blockchain:amazon-managed-blockchain-api
-  name: Amazon Managed Blockchain API
-  description: The Amazon Managed Blockchain API provides a fully managed service for creating and managing scalable blockchain
-    networks using open-source frameworks such as Hyperledger Fabric and Ethereum. Covers 27 operations for networks, members,
-    nodes, proposals, invitations, and accessors management.
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-accessors-api
+  name: Amazon Managed Blockchain Accessors API
+  description: The Accessors API from Amazon Managed Blockchain — 2 operation(s) for accessors.
   humanURL: https://aws.amazon.com/managed-blockchain/
   baseURL: https://managedblockchain.amazonaws.com
   tags:
-  - Blockchain
-  - Distributed Ledger
-  - Hyperledger Fabric
-  - Ethereum
+  - Accessors
   properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-accessors-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-managed-blockchain.yaml
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-invitations-api
+  name: Amazon Managed Blockchain Invitations API
+  description: The Invitations API from Amazon Managed Blockchain — 2 operation(s) for invitations.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Invitations
+  properties:
   - type: OpenAPI
-    url: openapi/amazon-managed-blockchain-openapi-original.yaml
+    url: openapi/amazon-managed-blockchain-invitations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-managed-blockchain.yaml
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-networks-api
+  name: Amazon Managed Blockchain Networks API
+  description: The Networks API from Amazon Managed Blockchain — 9 operation(s) for networks.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-networks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-managed-blockchain.yaml
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-tags-api
+  name: Amazon Managed Blockchain Tags API
+  description: The Tags API from Amazon Managed Blockchain — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
   - type: GettingStarted
     url: https://aws.amazon.com/managed-blockchain/getting-started/
   - type: Pricing
@@ -47,6 +127,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/amazon-managed-blockchain.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-managed-blockchain/overview
 - type: AgenticAccess
   url: agentic-access/amazon-managed-blockchain-agentic-access.yml
 - type: TrustCenter
