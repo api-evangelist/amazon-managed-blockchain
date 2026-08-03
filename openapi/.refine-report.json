@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-managed-blockchain",
+  "sources": [
+    "amazon-managed-blockchain-accessors-api-openapi.yml",
+    "amazon-managed-blockchain-invitations-api-openapi.yml",
+    "amazon-managed-blockchain-networks-api-openapi.yml",
+    "amazon-managed-blockchain-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-managed-blockchain-accessors-api-openapi.yml",
+    "amazon-managed-blockchain-invitations-api-openapi.yml",
+    "amazon-managed-blockchain-networks-api-openapi.yml",
+    "amazon-managed-blockchain-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
