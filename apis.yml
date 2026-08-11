@@ -52,8 +52,6 @@ apis:
     url: json-schema/amazon-managed-blockchain-network-schema.json
   - type: JSONLD
     url: json-ld/amazon-managed-blockchain-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-managed-blockchain.yaml
 - aid: amazon-managed-blockchain:amazon-managed-blockchain-invitations-api
   name: Amazon Managed Blockchain Invitations API
   description: The Invitations API from Amazon Managed Blockchain — 2 operation(s) for invitations.
@@ -76,8 +74,6 @@ apis:
     url: json-schema/amazon-managed-blockchain-network-schema.json
   - type: JSONLD
     url: json-ld/amazon-managed-blockchain-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-managed-blockchain.yaml
 - aid: amazon-managed-blockchain:amazon-managed-blockchain-networks-api
   name: Amazon Managed Blockchain Networks API
   description: The Networks API from Amazon Managed Blockchain — 9 operation(s) for networks.
@@ -100,8 +96,6 @@ apis:
     url: json-schema/amazon-managed-blockchain-network-schema.json
   - type: JSONLD
     url: json-ld/amazon-managed-blockchain-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-managed-blockchain.yaml
 - aid: amazon-managed-blockchain:amazon-managed-blockchain-tags-api
   name: Amazon Managed Blockchain Tags API
   description: The Tags API from Amazon Managed Blockchain — 2 operation(s) for tags.
@@ -124,8 +118,6 @@ apis:
     url: json-schema/amazon-managed-blockchain-network-schema.json
   - type: JSONLD
     url: json-ld/amazon-managed-blockchain-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-managed-blockchain.yaml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-managed-blockchain/overview
