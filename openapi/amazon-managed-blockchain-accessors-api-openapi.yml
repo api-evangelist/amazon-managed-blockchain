@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: Amazon Managed Blockchain Accessors API
   description: <p/> <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open-source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority.</p> <p>Managed Blockchain supports the Hyperledger Fabric and Ethereum open-source frameworks. Because of fundamental differences between the frameworks, some API actions or data types may only apply in the context of one framework and not the other. For example, actions related to Hyperledger Fabric network members such as <code>CreateMember</code> and <code>DeleteMember</code> don't apply to Ethereum.</p> <p>The description for each action indicates the framework or frameworks to which it applies. Data types and properties that apply only in the context of a particular framework are similarly indicated.</p>
@@ -385,123 +385,9 @@ paths:
       tags:
       - Accessors
 components:
-  parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    ListAccessorsOutput:
-      type: object
-      properties:
-        Accessors:
-          allOf:
-          - $ref: '#/components/schemas/AccessorSummaryList'
-          - description: An array of AccessorSummary objects that contain configuration properties for each accessor.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: ' The pagination token that indicates the next set of results to retrieve. '
-    GetAccessorOutput:
-      type: object
-      properties:
-        Accessor:
-          allOf:
-          - $ref: '#/components/schemas/Accessor'
-          - description: The properties of the accessor.
-    AccessorSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AccessorSummary'
-    ResourceAlreadyExistsException: {}
-    InternalServiceErrorException: {}
-    ResourceIdString:
-      type: string
-      minLength: 1
-      maxLength: 32
-    ArnString:
-      type: string
-      pattern: ^arn:.+:.+:.+:.+:.+
-      minLength: 1
-      maxLength: 1011
-    AccessDeniedException: {}
-    OutputTagMap:
-      type: object
-      minProperties: 0
-      maxProperties: 200
-      additionalProperties:
-        $ref: '#/components/schemas/TagValue'
+    ThrottlingException: {}
     ResourceLimitExceededException: {}
-    ResourceNotFoundException: {}
-    DeleteAccessorOutput:
-      type: object
-      properties: {}
-    AccessorSummary:
-      type: object
-      properties:
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the accessor.
-        Type:
-          allOf:
-          - $ref: '#/components/schemas/AccessorType'
-          - description: <p>The type of the accessor.</p> <note> <p>Currently accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/AccessorStatus'
-          - description: The current status of the accessor.
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The creation date and time of the accessor.
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/ArnString'
-          - description: The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
-      description: A summary of accessor properties.
-    AccessorType:
-      type: string
-      enum:
-      - BILLING_TOKEN
     Accessor:
       type: object
       properties:
@@ -534,18 +420,89 @@ components:
           - $ref: '#/components/schemas/OutputTagMap'
           - description: <p>The tags assigned to the Accessor.</p> <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
       description: The properties of the Accessor.
-    ThrottlingException: {}
-    TooManyTagsException: {}
+    AccessorBillingTokenString:
+      type: string
+      minLength: 42
+      maxLength: 42
+    ResourceAlreadyExistsException: {}
+    AccessDeniedException: {}
+    InternalServiceErrorException: {}
+    InvalidRequestException: {}
+    ResourceIdString:
+      type: string
+      minLength: 1
+      maxLength: 32
     PaginationToken:
       type: string
       maxLength: 128
+    ArnString:
+      type: string
+      pattern: ^arn:.+:.+:.+:.+:.+
+      minLength: 1
+      maxLength: 1011
+    OutputTagMap:
+      type: object
+      minProperties: 0
+      maxProperties: 200
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    AccessorSummary:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the accessor.
+        Type:
+          allOf:
+          - $ref: '#/components/schemas/AccessorType'
+          - description: <p>The type of the accessor.</p> <note> <p>Currently accessor type is restricted to <code>BILLING_TOKEN</code>.</p> </note>
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/AccessorStatus'
+          - description: The current status of the accessor.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The creation date and time of the accessor.
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the accessor. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+      description: A summary of accessor properties.
+    DeleteAccessorOutput:
+      type: object
+      properties: {}
+    Timestamp:
+      type: string
+      format: date-time
+    ListAccessorsOutput:
+      type: object
+      properties:
+        Accessors:
+          allOf:
+          - $ref: '#/components/schemas/AccessorSummaryList'
+          - description: An array of AccessorSummary objects that contain configuration properties for each accessor.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: ' The pagination token that indicates the next set of results to retrieve. '
+    AccessorSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccessorSummary'
+    TooManyTagsException: {}
     AccessorStatus:
       type: string
       enum:
       - AVAILABLE
       - PENDING_DELETION
       - DELETED
-    InvalidRequestException: {}
+    ResourceNotFoundException: {}
     CreateAccessorOutput:
       type: object
       properties:
@@ -557,17 +514,60 @@ components:
           allOf:
           - $ref: '#/components/schemas/AccessorBillingTokenString'
           - description: The billing token is a property of the Accessor. Use this token to make Ethereum API calls to your Ethereum node. The billing token is used to track your accessor object for billing Ethereum API requests made to your Ethereum nodes.
-    Timestamp:
+    GetAccessorOutput:
+      type: object
+      properties:
+        Accessor:
+          allOf:
+          - $ref: '#/components/schemas/Accessor'
+          - description: The properties of the accessor.
+    AccessorType:
       type: string
-      format: date-time
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    AccessorBillingTokenString:
-      type: string
-      minLength: 42
-      maxLength: 42
+      enum:
+      - BILLING_TOKEN
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
