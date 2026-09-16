@@ -1,9 +1,9 @@
 aid: amazon-managed-blockchain
 name: Amazon Managed Blockchain
-description: Amazon Managed Blockchain is a fully managed service that allows you to create and manage scalable blockchain
-  networks using popular open-source frameworks such as Hyperledger Fabric and Ethereum. It eliminates the overhead required
-  to create the network or join a public network, and automatically scales to meet the demands of thousands of applications
-  running millions of transactions.
+description: Amazon Managed Blockchain is a fully managed service that allows you to create and manage
+  scalable blockchain networks using popular open-source frameworks such as Hyperledger Fabric and Ethereum.
+  It eliminates the overhead required to create the network or join a public network, and automatically
+  scales to meet the demands of thousands of applications running millions of transactions.
 type: Index
 deliveryModel:
   model: saas
@@ -40,7 +40,7 @@ tags:
 - Ethereum
 url: https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: amazon-managed-blockchain:amazon-managed-blockchain-accessors-api
@@ -132,6 +132,8 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-managed-blockchain-context.jsonld
 common:
+- type: Website
+  url: https://amazon.com
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-managed-blockchain/overview
 - type: AgenticAccess
@@ -185,7 +187,8 @@ common:
 - type: UseCases
   data:
   - name: Supply Chain Transparency
-    description: Track products through supply chains with immutable blockchain records shared across organizations.
+    description: Track products through supply chains with immutable blockchain records shared across
+      organizations.
   - name: Financial Settlement
     description: Automate financial settlement processes with smart contracts on Hyperledger Fabric.
   - name: Healthcare Data Sharing
