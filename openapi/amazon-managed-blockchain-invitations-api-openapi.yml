@@ -1,9 +1,9 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2018-09-24'
   x-release: v4
-  title: Amazon Managed Blockchain Accessors Invitations API
-  description: <p/> <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open-source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority.</p> <p>Managed Blockchain supports the Hyperledger Fabric and Ethereum open-source frameworks. Because of fundamental differences between the frameworks, some API actions or data types may only apply in the context of one framework and not the other. For example, actions related to Hyperledger Fabric network members such as <code>CreateMember</code> and <code>DeleteMember</code> don't apply to Ethereum.</p> <p>The description for each action indicates the framework or frameworks to which it applies. Data types and properties that apply only in the context of a particular framework are similarly indicated.</p>
+  title: Amazon Managed Blockchain Invitations API
+  description: Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open-source frameworks.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/managedblockchain-2018-09-24.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +126,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListInvitations
-      description: <p>Returns a list of all invitations for the current Amazon Web Services account.</p> <p>Applies only to Hyperledger Fabric.</p>
+      description: 'Returns a list of all invitations for the current Amazon Web Services account.
+
+
+        Applies only to Hyperledger Fabric.'
       responses:
         '200':
           description: Success
@@ -211,7 +215,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     delete:
       operationId: RejectInvitation
-      description: <p>Rejects an invitation to join a network. This action can be called by a principal in an Amazon Web Services account that has received an invitation to create a member and join a network.</p> <p>Applies only to Hyperledger Fabric.</p>
+      description: 'Rejects an invitation to join a network. This action can be called by a principal in an Amazon Web Services account that has received an invitation to create a member and join a network.
+
+
+        Applies only to Hyperledger Fabric.'
       responses:
         '200':
           description: Success
@@ -269,64 +276,10 @@ paths:
       - Invitations
 components:
   schemas:
-    FrameworkVersionString:
-      type: string
-      minLength: 1
-      maxLength: 8
-    ThrottlingException: {}
-    ResourceLimitExceededException: {}
-    AccessDeniedException: {}
-    ListInvitationsOutput:
-      type: object
-      properties:
-        Invitations:
-          allOf:
-          - $ref: '#/components/schemas/InvitationList'
-          - description: The invitations for the network.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The pagination token that indicates the next set of results to retrieve.
-    InternalServiceErrorException: {}
-    InvitationList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Invitation'
-    InvalidRequestException: {}
     ResourceIdString:
       type: string
       minLength: 1
       maxLength: 32
-    PaginationToken:
-      type: string
-      maxLength: 128
-    NetworkStatus:
-      type: string
-      enum:
-      - CREATING
-      - AVAILABLE
-      - CREATE_FAILED
-      - DELETING
-      - DELETED
-    ArnString:
-      type: string
-      pattern: ^arn:.+:.+:.+:.+:.+
-      minLength: 1
-      maxLength: 1011
-    RejectInvitationOutput:
-      type: object
-      properties: {}
-    Framework:
-      type: string
-      enum:
-      - HYPERLEDGER_FABRIC
-      - ETHEREUM
-    DescriptionString:
-      type: string
-      maxLength: 128
-    Timestamp:
-      type: string
-      format: date-time
     InvitationStatus:
       type: string
       enum:
@@ -362,12 +315,22 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the invitation. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: <p>An invitation to an Amazon Web Services account to create a member and join the network.</p> <p>Applies only to Hyperledger Fabric.</p>
+    PaginationToken:
+      type: string
+      maxLength: 128
+    NetworkStatus:
+      type: string
+      enum:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - DELETING
+      - DELETED
     NameString:
       type: string
       pattern: .*\S.*
       minLength: 1
       maxLength: 64
-    IllegalActionException: {}
     NetworkSummary:
       type: object
       properties:
@@ -404,9 +367,65 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: A summary of network configuration properties.
+    ListInvitationsOutput:
+      type: object
+      properties:
+        Invitations:
+          allOf:
+          - $ref: '#/components/schemas/InvitationList'
+          - description: The invitations for the network.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The pagination token that indicates the next set of results to retrieve.
+    ThrottlingException: {}
+    InvitationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Invitation'
+    RejectInvitationOutput:
+      type: object
+      properties: {}
+    InternalServiceErrorException: {}
+    ResourceLimitExceededException: {}
+    ArnString:
+      type: string
+      pattern: ^arn:.+:.+:.+:.+:.+
+      minLength: 1
+      maxLength: 1011
+    IllegalActionException: {}
+    InvalidRequestException: {}
+    Framework:
+      type: string
+      enum:
+      - HYPERLEDGER_FABRIC
+      - ETHEREUM
+    AccessDeniedException: {}
+    FrameworkVersionString:
+      type: string
+      minLength: 1
+      maxLength: 8
+    DescriptionString:
+      type: string
+      maxLength: 128
+    Timestamp:
+      type: string
+      format: date-time
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -417,8 +436,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -431,18 +450,6 @@ components:
       required: false
     X-Amz-Date:
       name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

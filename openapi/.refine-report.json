@@ -1,10 +1,7 @@
 {
   "provider": "amazon-managed-blockchain",
   "sources": [
-    "amazon-managed-blockchain-accessors-api-openapi.yml",
-    "amazon-managed-blockchain-invitations-api-openapi.yml",
-    "amazon-managed-blockchain-networks-api-openapi.yml",
-    "amazon-managed-blockchain-tags-api-openapi.yml"
+    "_original/amazon-managed-blockchain-openapi-original.yaml"
   ],
   "outputs": [
     "amazon-managed-blockchain-accessors-api-openapi.yml",
@@ -16,7 +13,45 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-managed-blockchain-openapi-original.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /accessors -> Accessors",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /accessors -> Accessors",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /networks/{networkId}/members -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/members -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /networks -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /networks/{networkId}/nodes -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/nodes -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /networks/{networkId}/proposals -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/proposals -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths DELETE /accessors/{AccessorId} -> Accessors",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /accessors/{AccessorId} -> Accessors",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths DELETE /networks/{networkId}/members/{memberId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/members/{memberId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths PATCH /networks/{networkId}/members/{memberId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths DELETE /networks/{networkId}/nodes/{nodeId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/nodes/{nodeId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths PATCH /networks/{networkId}/nodes/{nodeId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/proposals/{proposalId} -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /invitations -> Invitations",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /networks/{networkId}/proposals/{proposalId}/votes -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /networks/{networkId}/proposals/{proposalId}/votes -> Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths GET /tags/{resourceArn} -> Tags",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths POST /tags/{resourceArn} -> Tags",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths DELETE /invitations/{invitationId} -> Invitations",
+    "amazon-managed-blockchain-openapi-original.yaml: tagged paths DELETE /tags/{resourceArn}#tagKeys -> Tags",
+    "amazon-managed-blockchain-openapi-original.yaml: declared missing tag: Accessors",
+    "amazon-managed-blockchain-openapi-original.yaml: declared missing tag: Invitations",
+    "amazon-managed-blockchain-openapi-original.yaml: declared missing tag: Networks",
+    "amazon-managed-blockchain-openapi-original.yaml: declared missing tag: Tags",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-managed-blockchain-accessors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-managed-blockchain-invitations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-managed-blockchain-networks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-managed-blockchain-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
