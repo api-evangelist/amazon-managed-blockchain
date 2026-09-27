@@ -1825,38 +1825,86 @@ paths:
       - Networks
 components:
   schemas:
-    MemberFrameworkAttributes:
+    VoteSummary:
       type: object
       properties:
-        Fabric:
+        Vote:
           allOf:
-          - $ref: '#/components/schemas/MemberFabricAttributes'
-          - description: Attributes of Hyperledger Fabric relevant to a member on a Managed Blockchain network that uses Hyperledger Fabric.
-      description: Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.
-    StateDBType:
+          - $ref: '#/components/schemas/VoteValue'
+          - description: ' The vote value, either <code>YES</code> or <code>NO</code>. '
+        MemberName:
+          allOf:
+          - $ref: '#/components/schemas/NetworkMemberNameString'
+          - description: ' The name of the member that cast the vote. '
+        MemberId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: ' The unique identifier of the member that cast the vote. '
+      description: <p> Properties of an individual vote that a member cast for a proposal. </p> <p>Applies only to Hyperledger Fabric.</p>
+    NodeStatus:
       type: string
       enum:
-      - LevelDB
-      - CouchDB
-    ProposalStatus:
+      - CREATING
+      - AVAILABLE
+      - UNHEALTHY
+      - CREATE_FAILED
+      - UPDATING
+      - DELETING
+      - DELETED
+      - FAILED
+      - INACCESSIBLE_ENCRYPTION_KEY
+    NetworkStatus:
       type: string
       enum:
-      - IN_PROGRESS
-      - APPROVED
-      - REJECTED
-      - EXPIRED
-      - ACTION_FAILED
-    ListNetworksOutput:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - DELETING
+      - DELETED
+    NetworkSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/NetworkSummary'
+    UsernameString:
+      type: string
+      pattern: ^[a-zA-Z][a-zA-Z0-9]*$
+      minLength: 1
+      maxLength: 16
+    MemberFabricConfiguration:
+      type: object
+      required:
+      - AdminUsername
+      - AdminPassword
+      properties:
+        AdminUsername:
+          allOf:
+          - $ref: '#/components/schemas/UsernameString'
+          - description: The user name for the member's initial administrative user.
+        AdminPassword:
+          allOf:
+          - $ref: '#/components/schemas/PasswordString'
+          - description: The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least 8 characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quotation mark (‘), a double quotation marks (“), a forward slash(/), a backward slash(\), @, or a space.
+      description: Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
+    Enabled:
+      type: boolean
+    FrameworkVersionString:
+      type: string
+      minLength: 1
+      maxLength: 8
+    GetNodeOutput:
       type: object
       properties:
-        Networks:
+        Node:
           allOf:
-          - $ref: '#/components/schemas/NetworkSummaryList'
-          - description: An array of <code>NetworkSummary</code> objects that contain configuration properties for each network.
-        NextToken:
+          - $ref: '#/components/schemas/Node'
+          - description: Properties of the node configuration.
+    CreateNodeOutput:
+      type: object
+      properties:
+        NodeId:
           allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The pagination token that indicates the next set of results to retrieve.
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the node.
     NodeEthereumAttributes:
       type: object
       properties:
@@ -1869,14 +1917,130 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The endpoint on which the Ethereum node listens to run Ethereum JSON-RPC methods over WebSocket connections from a client. Use this endpoint in client code for smart contracts when using a WebSocket connection. Connections to this endpoint are authenticated using <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>.
       description: Attributes of an Ethereum node.
-    MemberLogPublishingConfiguration:
+    MemberSummary:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the member.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/NetworkMemberNameString'
+          - description: The name of the member.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/DescriptionString'
+          - description: An optional description of the member.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/MemberStatus'
+          - description: <p>The status of the member.</p> <ul> <li> <p> <code>CREATING</code> - The Amazon Web Services account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The Amazon Web Services account attempted to create a member and creation failed.</p> </li> <li> <p> <code>UPDATING</code> - The member is in the process of being updated.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_KEY</code> - The member is impaired and might not function as expected because it cannot access the specified customer managed key in Key Management Service (KMS) for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked.</p> <p>The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the member resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource.</p> </li> </ul>
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time that the member was created.
+        IsOwned:
+          allOf:
+          - $ref: '#/components/schemas/IsOwned'
+          - description: An indicator of whether the member is owned by your Amazon Web Services account or a different Amazon Web Services account.
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+      description: <p>A summary of configuration properties for a member.</p> <p>Applies only to Hyperledger Fabric.</p>
+    Member:
+      type: object
+      properties:
+        NetworkId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the network to which the member belongs.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the member.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/NetworkMemberNameString'
+          - description: The name of the member.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/DescriptionString'
+          - description: An optional description for the member.
+        FrameworkAttributes:
+          allOf:
+          - $ref: '#/components/schemas/MemberFrameworkAttributes'
+          - description: Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.
+        LogPublishingConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/MemberLogPublishingConfiguration'
+          - description: Configuration properties for logging events associated with a member.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/MemberStatus'
+          - description: <p>The status of a member.</p> <ul> <li> <p> <code>CREATING</code> - The Amazon Web Services account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The Amazon Web Services account attempted to create a member and creation failed.</p> </li> <li> <p> <code>UPDATING</code> - The member is in the process of being updated.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_KEY</code> - The member is impaired and might not function as expected because it cannot access the specified customer managed key in KMS for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked.</p> <p>The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the member resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource.</p> </li> </ul>
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time that the member was created.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/OutputTagMap'
+          - description: <p>Tags assigned to the member. Tags consist of a key and optional value.</p> <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+        KmsKeyArn:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p>The Amazon Resource Name (ARN) of the customer managed key in Key Management Service (KMS) that the member uses for encryption at rest. If the value of this parameter is <code>"AWS Owned KMS Key"</code>, the member uses an Amazon Web Services owned KMS key for encryption. This parameter is inherited by the nodes that this member owns.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/managed-blockchain-encryption-at-rest.html">Encryption at Rest</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+      description: <p>Member configuration properties.</p> <p>Applies only to Hyperledger Fabric.</p>
+    ListProposalsOutput:
+      type: object
+      properties:
+        Proposals:
+          allOf:
+          - $ref: '#/components/schemas/ProposalSummaryList'
+          - description: The summary of each proposal made on the network.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The pagination token that indicates the next set of results to retrieve.
+    MemberFrameworkAttributes:
       type: object
       properties:
         Fabric:
           allOf:
-          - $ref: '#/components/schemas/MemberFabricLogPublishingConfiguration'
-          - description: Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.
-      description: Configuration properties for logging events associated with a member of a Managed Blockchain network.
+          - $ref: '#/components/schemas/MemberFabricAttributes'
+          - description: Attributes of Hyperledger Fabric relevant to a member on a Managed Blockchain network that uses Hyperledger Fabric.
+      description: Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.
+    VoteCount:
+      type: integer
+    NetworkFrameworkAttributes:
+      type: object
+      properties:
+        Fabric:
+          allOf:
+          - $ref: '#/components/schemas/NetworkFabricAttributes'
+          - description: Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric.
+        Ethereum:
+          allOf:
+          - $ref: '#/components/schemas/NetworkEthereumAttributes'
+          - description: 'Attributes of an Ethereum network for Managed Blockchain resources participating in an Ethereum network. '
+      description: Attributes relevant to the network for the blockchain framework that the network uses.
+    ListNetworksOutput:
+      type: object
+      properties:
+        Networks:
+          allOf:
+          - $ref: '#/components/schemas/NetworkSummaryList'
+          - description: An array of <code>NetworkSummary</code> objects that contain configuration properties for each network.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The pagination token that indicates the next set of results to retrieve.
     NetworkFabricAttributes:
       type: object
       properties:
@@ -1889,27 +2053,55 @@ components:
           - $ref: '#/components/schemas/Edition'
           - description: The edition of Amazon Managed Blockchain that Hyperledger Fabric uses. For more information, see <a href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed Blockchain Pricing</a>.
       description: Attributes of Hyperledger Fabric for a network.
-    ThresholdComparator:
-      type: string
-      enum:
-      - GREATER_THAN
-      - GREATER_THAN_OR_EQUAL_TO
-    ListNodesOutput:
+    GetMemberOutput:
       type: object
       properties:
-        Nodes:
+        Member:
           allOf:
-          - $ref: '#/components/schemas/NodeSummaryList'
-          - description: An array of <code>NodeSummary</code> objects that contain configuration properties for each node.
-        NextToken:
+          - $ref: '#/components/schemas/Member'
+          - description: The properties of a member.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    VotingPolicy:
+      type: object
+      properties:
+        ApprovalThresholdPolicy:
           allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The pagination token that indicates the next set of results to retrieve.
-    RemoveActionList:
+          - $ref: '#/components/schemas/ApprovalThresholdPolicy'
+          - description: Defines the rules for the network for voting on proposals, such as the percentage of <code>YES</code> votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.
+      description: <p> The voting rules for the network to decide if a proposal is accepted </p> <p>Applies only to Hyperledger Fabric.</p>
+    ProposalSummaryList:
       type: array
       items:
-        $ref: '#/components/schemas/RemoveAction'
-    ResourceAlreadyExistsException: {}
+        $ref: '#/components/schemas/ProposalSummary'
+    ResourceIdString:
+      type: string
+      minLength: 1
+      maxLength: 32
+    InviteActionList:
+      type: array
+      items:
+        $ref: '#/components/schemas/InviteAction'
+    MemberStatus:
+      type: string
+      enum:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - UPDATING
+      - DELETING
+      - DELETED
+      - INACCESSIBLE_ENCRYPTION_KEY
+    IllegalActionException: {}
+    InstanceTypeString:
+      type: string
+    Framework:
+      type: string
+      enum:
+      - HYPERLEDGER_FABRIC
+      - ETHEREUM
     Proposal:
       type: object
       properties:
@@ -1970,8 +2162,73 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: <p>Properties of a proposal on a Managed Blockchain network.</p> <p>Applies only to Hyperledger Fabric.</p>
-    PrincipalString:
+    NetworkEthereumAttributes:
+      type: object
+      properties:
+        ChainId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p>The Ethereum <code>CHAIN_ID</code> associated with the Ethereum network. Chain IDs are as follows:</p> <ul> <li> <p>mainnet = <code>1</code> </p> </li> <li> <p>goerli = <code>5</code> </p> </li> <li> <p>rinkeby = <code>4</code> </p> </li> </ul>
+      description: 'Attributes of Ethereum for a network. '
+    ThresholdPercentageInt:
+      type: integer
+      minimum: 0
+      maximum: 100
+    String:
       type: string
+    AccessDeniedException: {}
+    NodeFrameworkAttributes:
+      type: object
+      properties:
+        Fabric:
+          allOf:
+          - $ref: '#/components/schemas/NodeFabricAttributes'
+          - description: Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.
+        Ethereum:
+          allOf:
+          - $ref: '#/components/schemas/NodeEthereumAttributes'
+          - description: 'Attributes of Ethereum for a node on a Managed Blockchain network that uses Ethereum. '
+      description: Attributes relevant to a node on a Managed Blockchain network for the blockchain framework that the network uses.
+    ProposalVoteList:
+      type: array
+      items:
+        $ref: '#/components/schemas/VoteSummary'
+    GetProposalOutput:
+      type: object
+      properties:
+        Proposal:
+          allOf:
+          - $ref: '#/components/schemas/Proposal'
+          - description: Information about a proposal.
+    CreateProposalOutput:
+      type: object
+      properties:
+        ProposalId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the proposal.
+    MemberFabricLogPublishingConfiguration:
+      type: object
+      properties:
+        CaLogs:
+          allOf:
+          - $ref: '#/components/schemas/LogConfigurations'
+          - description: Configuration properties for logging events associated with a member's Certificate Authority (CA). CA logs help you determine when a member in your account joins the network, or when new peers register with a member CA.
+      description: Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.
+    ResourceAlreadyExistsException: {}
+    PaginationToken:
+      type: string
+      maxLength: 128
+    InternalServiceErrorException: {}
+    MemberSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/MemberSummary'
+    ThresholdComparator:
+      type: string
+      enum:
+      - GREATER_THAN
+      - GREATER_THAN_OR_EQUAL_TO
     InviteAction:
       type: object
       required:
@@ -1982,173 +2239,12 @@ components:
           - $ref: '#/components/schemas/PrincipalString'
           - description: The Amazon Web Services account ID to invite.
       description: <p>An action to invite a specific Amazon Web Services account to create a member and join the network. The <code>InviteAction</code> is carried out when a <code>Proposal</code> is <code>APPROVED</code>.</p> <p>Applies only to Hyperledger Fabric.</p>
-    ArnString:
-      type: string
-      pattern: ^arn:.+:.+:.+:.+:.+
-      minLength: 1
-      maxLength: 1011
-    ThresholdPercentageInt:
-      type: integer
-      minimum: 0
-      maximum: 100
     PasswordString:
       type: string
       pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*[@'\\"/])[a-zA-Z0-9\S]*$
       minLength: 8
       maxLength: 32
       format: password
-    GetNodeOutput:
-      type: object
-      properties:
-        Node:
-          allOf:
-          - $ref: '#/components/schemas/Node'
-          - description: Properties of the node configuration.
-    GetProposalOutput:
-      type: object
-      properties:
-        Proposal:
-          allOf:
-          - $ref: '#/components/schemas/Proposal'
-          - description: Information about a proposal.
-    DescriptionString:
-      type: string
-      maxLength: 128
-    MemberFabricAttributes:
-      type: object
-      properties:
-        AdminUsername:
-          allOf:
-          - $ref: '#/components/schemas/UsernameString'
-          - description: The user name for the initial administrator user for the member.
-        CaEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The endpoint used to access the member's certificate authority.
-      description: Attributes of Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.
-    NodeSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/NodeSummary'
-    Timestamp:
-      type: string
-      format: date-time
-    ResourceIdString:
-      type: string
-      minLength: 1
-      maxLength: 32
-    NetworkEthereumAttributes:
-      type: object
-      properties:
-        ChainId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: <p>The Ethereum <code>CHAIN_ID</code> associated with the Ethereum network. Chain IDs are as follows:</p> <ul> <li> <p>mainnet = <code>1</code> </p> </li> <li> <p>goerli = <code>5</code> </p> </li> <li> <p>rinkeby = <code>4</code> </p> </li> </ul>
-      description: 'Attributes of Ethereum for a network. '
-    NodeSummary:
-      type: object
-      properties:
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the node.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/NodeStatus'
-          - description: The status of the node.
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time that the node was created.
-        AvailabilityZone:
-          allOf:
-          - $ref: '#/components/schemas/AvailabilityZoneString'
-          - description: The Availability Zone in which the node exists.
-        InstanceType:
-          allOf:
-          - $ref: '#/components/schemas/InstanceTypeString'
-          - description: The EC2 instance type for the node.
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/ArnString'
-          - description: The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
-      description: A summary of configuration properties for a node.
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    NetworkFrameworkAttributes:
-      type: object
-      properties:
-        Fabric:
-          allOf:
-          - $ref: '#/components/schemas/NetworkFabricAttributes'
-          - description: Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric.
-        Ethereum:
-          allOf:
-          - $ref: '#/components/schemas/NetworkEthereumAttributes'
-          - description: 'Attributes of an Ethereum network for Managed Blockchain resources participating in an Ethereum network. '
-      description: Attributes relevant to the network for the blockchain framework that the network uses.
-    LogConfiguration:
-      type: object
-      properties:
-        Enabled:
-          allOf:
-          - $ref: '#/components/schemas/Enabled'
-          - description: Indicates whether logging is enabled.
-      description: A configuration for logging events.
-    GetNetworkOutput:
-      type: object
-      properties:
-        Network:
-          allOf:
-          - $ref: '#/components/schemas/Network'
-          - description: An object containing network configuration parameters.
-    ListMembersOutput:
-      type: object
-      properties:
-        Members:
-          allOf:
-          - $ref: '#/components/schemas/MemberSummaryList'
-          - description: An array of <code>MemberSummary</code> objects. Each object contains details about a network member.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The pagination token that indicates the next set of results to retrieve.
-    GetMemberOutput:
-      type: object
-      properties:
-        Member:
-          allOf:
-          - $ref: '#/components/schemas/Member'
-          - description: The properties of a member.
-    VoteCount:
-      type: integer
-    VoteValue:
-      type: string
-      enum:
-      - 'YES'
-      - 'NO'
-    UpdateNodeOutput:
-      type: object
-      properties: {}
-    ResourceNotReadyException: {}
-    InternalServiceErrorException: {}
-    MemberFabricConfiguration:
-      type: object
-      required:
-      - AdminUsername
-      - AdminPassword
-      properties:
-        AdminUsername:
-          allOf:
-          - $ref: '#/components/schemas/UsernameString'
-          - description: The user name for the member's initial administrative user.
-        AdminPassword:
-          allOf:
-          - $ref: '#/components/schemas/PasswordString'
-          - description: The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least 8 characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quotation mark (‘), a double quotation marks (“), a forward slash(/), a backward slash(\), @, or a space.
-      description: Configuration properties for Hyperledger Fabric for a member in a Managed Blockchain network that is using the Hyperledger Fabric framework.
     ProposalSummary:
       type: object
       properties:
@@ -2185,222 +2281,27 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: <p>Properties of a proposal.</p> <p>Applies only to Hyperledger Fabric.</p>
-    NetworkFabricConfiguration:
-      type: object
-      required:
-      - Edition
-      properties:
-        Edition:
-          allOf:
-          - $ref: '#/components/schemas/Edition'
-          - description: The edition of Amazon Managed Blockchain that the network uses. For more information, see <a href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed Blockchain Pricing</a>.
-      description: Hyperledger Fabric configuration properties for the network.
-    VoteOnProposalOutput:
-      type: object
-      properties: {}
-    NetworkSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/NetworkSummary'
-    IllegalActionException: {}
-    ProposalVoteList:
-      type: array
-      items:
-        $ref: '#/components/schemas/VoteSummary'
-    MemberFabricLogPublishingConfiguration:
+    NodeFabricAttributes:
       type: object
       properties:
-        CaLogs:
+        PeerEndpoint:
           allOf:
-          - $ref: '#/components/schemas/LogConfigurations'
-          - description: Configuration properties for logging events associated with a member's Certificate Authority (CA). CA logs help you determine when a member in your account joins the network, or when new peers register with a member CA.
-      description: Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.
-    VoteSummary:
-      type: object
-      properties:
-        Vote:
+          - $ref: '#/components/schemas/String'
+          - description: The endpoint that identifies the peer node for all services except peer channel-based event services.
+        PeerEventEndpoint:
           allOf:
-          - $ref: '#/components/schemas/VoteValue'
-          - description: ' The vote value, either <code>YES</code> or <code>NO</code>. '
-        MemberName:
-          allOf:
-          - $ref: '#/components/schemas/NetworkMemberNameString'
-          - description: ' The name of the member that cast the vote. '
-        MemberId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: ' The unique identifier of the member that cast the vote. '
-      description: <p> Properties of an individual vote that a member cast for a proposal. </p> <p>Applies only to Hyperledger Fabric.</p>
-    FrameworkVersionString:
-      type: string
-      minLength: 1
-      maxLength: 8
-    Enabled:
-      type: boolean
-    String:
-      type: string
-    ProposalSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProposalSummary'
-    MemberStatus:
-      type: string
-      enum:
-      - CREATING
-      - AVAILABLE
-      - CREATE_FAILED
-      - UPDATING
-      - DELETING
-      - DELETED
-      - INACCESSIBLE_ENCRYPTION_KEY
-    InstanceTypeString:
-      type: string
-    ProposalDurationInt:
-      type: integer
-      minimum: 1
-      maximum: 168
-    CreateNetworkOutput:
-      type: object
-      properties:
-        NetworkId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier for the network.
-        MemberId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier for the first member within the network.
-    InviteActionList:
-      type: array
-      items:
-        $ref: '#/components/schemas/InviteAction'
-    UsernameString:
-      type: string
-      pattern: ^[a-zA-Z][a-zA-Z0-9]*$
-      minLength: 1
-      maxLength: 16
-    AvailabilityZoneString:
-      type: string
-    RemoveAction:
-      type: object
-      required:
-      - MemberId
-      properties:
-        MemberId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the member to remove.
-      description: <p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p> <p>Applies only to Hyperledger Fabric.</p>
-    NetworkStatus:
-      type: string
-      enum:
-      - CREATING
-      - AVAILABLE
-      - CREATE_FAILED
-      - DELETING
-      - DELETED
-    VotingPolicy:
-      type: object
-      properties:
-        ApprovalThresholdPolicy:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalThresholdPolicy'
-          - description: Defines the rules for the network for voting on proposals, such as the percentage of <code>YES</code> votes required for the proposal to be approved and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.
-      description: <p> The voting rules for the network to decide if a proposal is accepted </p> <p>Applies only to Hyperledger Fabric.</p>
-    NodeFabricLogPublishingConfiguration:
-      type: object
-      properties:
-        ChaincodeLogs:
-          allOf:
-          - $ref: '#/components/schemas/LogConfigurations'
-          - description: Configuration properties for logging events associated with chaincode execution on a peer node. Chaincode logs contain the results of instantiating, invoking, and querying the chaincode. A peer can run multiple instances of chaincode. When enabled, a log stream is created for all chaincodes, with an individual log stream for each chaincode.
-        PeerLogs:
-          allOf:
-          - $ref: '#/components/schemas/LogConfigurations'
-          - description: 'Configuration properties for a peer node log. Peer node logs contain messages generated when your client submits transaction proposals to peer nodes, requests to join channels, enrolls an admin peer, and lists the chaincode instances on a peer node. '
-      description: Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.
-    MemberFrameworkConfiguration:
-      type: object
-      properties:
-        Fabric:
-          allOf:
-          - $ref: '#/components/schemas/MemberFabricConfiguration'
-          - description: Attributes of Hyperledger Fabric for a member on a Managed Blockchain network that uses Hyperledger Fabric.
-      description: Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.
-    ThrottlingException: {}
-    DeleteMemberOutput:
-      type: object
-      properties: {}
-    ApprovalThresholdPolicy:
-      type: object
-      properties:
-        ThresholdPercentage:
-          allOf:
-          - $ref: '#/components/schemas/ThresholdPercentageInt'
-          - description: The percentage of votes among all members that must be <code>YES</code> for a proposal to be approved. For example, a <code>ThresholdPercentage</code> value of <code>50</code> indicates 50%. The <code>ThresholdComparator</code> determines the precise comparison. If a <code>ThresholdPercentage</code> value of <code>50</code> is specified on a network with 10 members, along with a <code>ThresholdComparator</code> value of <code>GREATER_THAN</code>, this indicates that 6 <code>YES</code> votes are required for the proposal to be approved.
-        ProposalDurationInHours:
-          allOf:
-          - $ref: '#/components/schemas/ProposalDurationInt'
-          - description: The duration from the time that a proposal is created until it expires. If members cast neither the required number of <code>YES</code> votes to approve the proposal nor the number of <code>NO</code> votes required to reject it before the duration expires, the proposal is <code>EXPIRED</code> and <code>ProposalActions</code> aren't carried out.
-        ThresholdComparator:
-          allOf:
-          - $ref: '#/components/schemas/ThresholdComparator'
-          - description: Determines whether the vote percentage must be greater than the <code>ThresholdPercentage</code> or must be greater than or equal to the <code>ThreholdPercentage</code> to be approved.
-      description: <p>A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of <code>YES</code> votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p> <p>Applies only to Hyperledger Fabric.</p>
+          - $ref: '#/components/schemas/String'
+          - description: The endpoint that identifies the peer node for peer channel-based event services.
+      description: Attributes of Hyperledger Fabric for a peer node on a Hyperledger Fabric network on Managed Blockchain.
     Edition:
       type: string
       enum:
       - STARTER
       - STANDARD
-    NodeFrameworkAttributes:
-      type: object
-      properties:
-        Fabric:
-          allOf:
-          - $ref: '#/components/schemas/NodeFabricAttributes'
-          - description: Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.
-        Ethereum:
-          allOf:
-          - $ref: '#/components/schemas/NodeEthereumAttributes'
-          - description: 'Attributes of Ethereum for a node on a Managed Blockchain network that uses Ethereum. '
-      description: Attributes relevant to a node on a Managed Blockchain network for the blockchain framework that the network uses.
-    CreateMemberOutput:
-      type: object
-      properties:
-        MemberId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the member.
-    UpdateMemberOutput:
+    UpdateNodeOutput:
       type: object
       properties: {}
-    CreateProposalOutput:
-      type: object
-      properties:
-        ProposalId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the proposal.
-    InvalidRequestException: {}
-    CreateNodeOutput:
-      type: object
-      properties:
-        NodeId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the node.
-    Framework:
-      type: string
-      enum:
-      - HYPERLEDGER_FABRIC
-      - ETHEREUM
-    AccessDeniedException: {}
-    InputTagMap:
-      type: object
-      minProperties: 0
-      maxProperties: 50
-      additionalProperties:
-        $ref: '#/components/schemas/TagValue'
+    ResourceNotFoundException: {}
     ProposalActions:
       type: object
       properties:
@@ -2413,130 +2314,40 @@ components:
           - $ref: '#/components/schemas/RemoveActionList'
           - description: ' The actions to perform for an <code>APPROVED</code> proposal to remove a member from the network, which deletes the member and all associated member resources from the network. '
       description: <p> The actions to carry out if a proposal is <code>APPROVED</code>. </p> <p>Applies only to Hyperledger Fabric.</p>
-    NodeStatus:
-      type: string
-      enum:
-      - CREATING
-      - AVAILABLE
-      - UNHEALTHY
-      - CREATE_FAILED
-      - UPDATING
-      - DELETING
-      - DELETED
-      - FAILED
-      - INACCESSIBLE_ENCRYPTION_KEY
-    NodeLogPublishingConfiguration:
+    TooManyTagsException: {}
+    LogConfiguration:
       type: object
       properties:
-        Fabric:
+        Enabled:
           allOf:
-          - $ref: '#/components/schemas/NodeFabricLogPublishingConfiguration'
-          - description: Configuration properties for logging events associated with a node that is owned by a member of a Managed Blockchain network using the Hyperledger Fabric framework.
-      description: Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.
-    IsOwned:
-      type: boolean
-    Member:
-      type: object
-      properties:
-        NetworkId:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the network to which the member belongs.
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the member.
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/NetworkMemberNameString'
-          - description: The name of the member.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/DescriptionString'
-          - description: An optional description for the member.
-        FrameworkAttributes:
-          allOf:
-          - $ref: '#/components/schemas/MemberFrameworkAttributes'
-          - description: Attributes relevant to a member for the blockchain framework that the Managed Blockchain network uses.
-        LogPublishingConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/MemberLogPublishingConfiguration'
-          - description: Configuration properties for logging events associated with a member.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/MemberStatus'
-          - description: <p>The status of a member.</p> <ul> <li> <p> <code>CREATING</code> - The Amazon Web Services account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The Amazon Web Services account attempted to create a member and creation failed.</p> </li> <li> <p> <code>UPDATING</code> - The member is in the process of being updated.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_KEY</code> - The member is impaired and might not function as expected because it cannot access the specified customer managed key in KMS for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked.</p> <p>The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the member resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource.</p> </li> </ul>
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time that the member was created.
-        Tags:
-          allOf:
-          - $ref: '#/components/schemas/OutputTagMap'
-          - description: <p>Tags assigned to the member. Tags consist of a key and optional value.</p> <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/ArnString'
-          - description: The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
-        KmsKeyArn:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: <p>The Amazon Resource Name (ARN) of the customer managed key in Key Management Service (KMS) that the member uses for encryption at rest. If the value of this parameter is <code>"AWS Owned KMS Key"</code>, the member uses an Amazon Web Services owned KMS key for encryption. This parameter is inherited by the nodes that this member owns.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/managed-blockchain-encryption-at-rest.html">Encryption at Rest</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
-      description: <p>Member configuration properties.</p> <p>Applies only to Hyperledger Fabric.</p>
+          - $ref: '#/components/schemas/Enabled'
+          - description: Indicates whether logging is enabled.
+      description: A configuration for logging events.
     NetworkMemberNameString:
       type: string
       pattern: ^(?!-|[0-9])(?!.*-$)(?!.*?--)[a-zA-Z0-9-]+$
       minLength: 1
       maxLength: 64
-    ResourceNotFoundException: {}
-    MemberSummary:
-      type: object
-      properties:
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the member.
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/NetworkMemberNameString'
-          - description: The name of the member.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/DescriptionString'
-          - description: An optional description of the member.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/MemberStatus'
-          - description: <p>The status of the member.</p> <ul> <li> <p> <code>CREATING</code> - The Amazon Web Services account is in the process of creating a member.</p> </li> <li> <p> <code>AVAILABLE</code> - The member has been created and can participate in the network.</p> </li> <li> <p> <code>CREATE_FAILED</code> - The Amazon Web Services account attempted to create a member and creation failed.</p> </li> <li> <p> <code>UPDATING</code> - The member is in the process of being updated.</p> </li> <li> <p> <code>DELETING</code> - The member and all associated resources are in the process of being deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>DELETED</code> - The member can no longer participate on the network and all associated resources are deleted. Either the Amazon Web Services account that owns the member deleted it, or the member is being deleted as the result of an <code>APPROVED</code> <code>PROPOSAL</code> to remove the member.</p> </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_KEY</code> - The member is impaired and might not function as expected because it cannot access the specified customer managed key in Key Management Service (KMS) for encryption at rest. Either the KMS key was disabled or deleted, or the grants on the key were revoked.</p> <p>The effect of disabling or deleting a key or of revoking a grant isn't immediate. It might take some time for the member resource to discover that the key is inaccessible. When a resource is in this state, we recommend deleting and recreating the resource.</p> </li> </ul>
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time that the member was created.
-        IsOwned:
-          allOf:
-          - $ref: '#/components/schemas/IsOwned'
-          - description: An indicator of whether the member is owned by your Amazon Web Services account or a different Amazon Web Services account.
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/ArnString'
-          - description: The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
-      description: <p>A summary of configuration properties for a member.</p> <p>Applies only to Hyperledger Fabric.</p>
-    DeleteNodeOutput:
-      type: object
-      properties: {}
-    MemberSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/MemberSummary'
-    OutputTagMap:
-      type: object
-      minProperties: 0
-      maxProperties: 200
-      additionalProperties:
-        $ref: '#/components/schemas/TagValue'
-    PaginationToken:
+    IsOwned:
+      type: boolean
+    DescriptionString:
       type: string
       maxLength: 128
+    ProposalDurationInt:
+      type: integer
+      minimum: 1
+      maximum: 168
+    MemberLogPublishingConfiguration:
+      type: object
+      properties:
+        Fabric:
+          allOf:
+          - $ref: '#/components/schemas/MemberFabricLogPublishingConfiguration'
+          - description: Configuration properties for logging events associated with a member of a Managed Blockchain network using the Hyperledger Fabric framework.
+      description: Configuration properties for logging events associated with a member of a Managed Blockchain network.
+    Timestamp:
+      type: string
+      format: date-time
     Node:
       type: object
       properties:
@@ -2593,71 +2404,188 @@ components:
           - $ref: '#/components/schemas/String'
           - description: <p>The Amazon Resource Name (ARN) of the customer managed key in Key Management Service (KMS) that the node uses for encryption at rest. If the value of this parameter is <code>"AWS Owned KMS Key"</code>, the node uses an Amazon Web Services owned KMS key for encryption. The node inherits this parameter from the member that it belongs to.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/managed-blockchain-encryption-at-rest.html">Encryption at Rest</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p> <p>Applies only to Hyperledger Fabric.</p>
       description: Configuration properties of a node.
-    NameString:
-      type: string
-      pattern: .*\S.*
-      minLength: 1
-      maxLength: 64
-    NetworkSummary:
+    MemberFrameworkConfiguration:
+      type: object
+      properties:
+        Fabric:
+          allOf:
+          - $ref: '#/components/schemas/MemberFabricConfiguration'
+          - description: Attributes of Hyperledger Fabric for a member on a Managed Blockchain network that uses Hyperledger Fabric.
+      description: Configuration properties relevant to a member for the blockchain framework that the Managed Blockchain network uses.
+    ThrottlingException: {}
+    RemoveAction:
+      type: object
+      required:
+      - MemberId
+      properties:
+        MemberId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the member to remove.
+      description: <p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p> <p>Applies only to Hyperledger Fabric.</p>
+    NodeFabricLogPublishingConfiguration:
+      type: object
+      properties:
+        ChaincodeLogs:
+          allOf:
+          - $ref: '#/components/schemas/LogConfigurations'
+          - description: Configuration properties for logging events associated with chaincode execution on a peer node. Chaincode logs contain the results of instantiating, invoking, and querying the chaincode. A peer can run multiple instances of chaincode. When enabled, a log stream is created for all chaincodes, with an individual log stream for each chaincode.
+        PeerLogs:
+          allOf:
+          - $ref: '#/components/schemas/LogConfigurations'
+          - description: 'Configuration properties for a peer node log. Peer node logs contain messages generated when your client submits transaction proposals to peer nodes, requests to join channels, enrolls an admin peer, and lists the chaincode instances on a peer node. '
+      description: Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.
+    NodeSummary:
       type: object
       properties:
         Id:
           allOf:
           - $ref: '#/components/schemas/ResourceIdString'
-          - description: The unique identifier of the network.
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/NameString'
-          - description: The name of the network.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/DescriptionString'
-          - description: An optional description of the network.
-        Framework:
-          allOf:
-          - $ref: '#/components/schemas/Framework'
-          - description: The blockchain framework that the network uses.
-        FrameworkVersion:
-          allOf:
-          - $ref: '#/components/schemas/FrameworkVersionString'
-          - description: The version of the blockchain framework that the network uses.
+          - description: The unique identifier of the node.
         Status:
           allOf:
-          - $ref: '#/components/schemas/NetworkStatus'
-          - description: The current status of the network.
+          - $ref: '#/components/schemas/NodeStatus'
+          - description: The status of the node.
         CreationDate:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time that the network was created.
+          - description: The date and time that the node was created.
+        AvailabilityZone:
+          allOf:
+          - $ref: '#/components/schemas/AvailabilityZoneString'
+          - description: The Availability Zone in which the node exists.
+        InstanceType:
+          allOf:
+          - $ref: '#/components/schemas/InstanceTypeString'
+          - description: The EC2 instance type for the node.
         Arn:
           allOf:
           - $ref: '#/components/schemas/ArnString'
-          - description: The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
-      description: A summary of network configuration properties.
-    ResourceLimitExceededException: {}
-    TooManyTagsException: {}
-    ListProposalsOutput:
+          - description: The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+      description: A summary of configuration properties for a node.
+    PrincipalString:
+      type: string
+    CreateNetworkOutput:
       type: object
       properties:
-        Proposals:
+        NetworkId:
           allOf:
-          - $ref: '#/components/schemas/ProposalSummaryList'
-          - description: The summary of each proposal made on the network.
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier for the network.
+        MemberId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier for the first member within the network.
+    MemberFabricAttributes:
+      type: object
+      properties:
+        AdminUsername:
+          allOf:
+          - $ref: '#/components/schemas/UsernameString'
+          - description: The user name for the initial administrator user for the member.
+        CaEndpoint:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The endpoint used to access the member's certificate authority.
+      description: Attributes of Hyperledger Fabric for a member in a Managed Blockchain network using the Hyperledger Fabric framework.
+    VoteOnProposalOutput:
+      type: object
+      properties: {}
+    DeleteMemberOutput:
+      type: object
+      properties: {}
+    ArnString:
+      type: string
+      pattern: ^arn:.+:.+:.+:.+:.+
+      minLength: 1
+      maxLength: 1011
+    ProposalStatus:
+      type: string
+      enum:
+      - IN_PROGRESS
+      - APPROVED
+      - REJECTED
+      - EXPIRED
+      - ACTION_FAILED
+    NetworkFabricConfiguration:
+      type: object
+      required:
+      - Edition
+      properties:
+        Edition:
+          allOf:
+          - $ref: '#/components/schemas/Edition'
+          - description: The edition of Amazon Managed Blockchain that the network uses. For more information, see <a href="http://aws.amazon.com/managed-blockchain/pricing/">Amazon Managed Blockchain Pricing</a>.
+      description: Hyperledger Fabric configuration properties for the network.
+    ResourceLimitExceededException: {}
+    DeleteNodeOutput:
+      type: object
+      properties: {}
+    AvailabilityZoneString:
+      type: string
+    StateDBType:
+      type: string
+      enum:
+      - LevelDB
+      - CouchDB
+    NodeLogPublishingConfiguration:
+      type: object
+      properties:
+        Fabric:
+          allOf:
+          - $ref: '#/components/schemas/NodeFabricLogPublishingConfiguration'
+          - description: Configuration properties for logging events associated with a node that is owned by a member of a Managed Blockchain network using the Hyperledger Fabric framework.
+      description: Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.
+    RemoveActionList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RemoveAction'
+    VoteValue:
+      type: string
+      enum:
+      - 'YES'
+      - 'NO'
+    ListNodesOutput:
+      type: object
+      properties:
+        Nodes:
+          allOf:
+          - $ref: '#/components/schemas/NodeSummaryList'
+          - description: An array of <code>NodeSummary</code> objects that contain configuration properties for each node.
         NextToken:
           allOf:
           - $ref: '#/components/schemas/PaginationToken'
           - description: The pagination token that indicates the next set of results to retrieve.
-    ListProposalVotesOutput:
+    GetNetworkOutput:
       type: object
       properties:
-        ProposalVotes:
+        Network:
           allOf:
-          - $ref: '#/components/schemas/ProposalVoteList'
-          - description: ' The list of votes. '
-        NextToken:
+          - $ref: '#/components/schemas/Network'
+          - description: An object containing network configuration parameters.
+    ApprovalThresholdPolicy:
+      type: object
+      properties:
+        ThresholdPercentage:
           allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: ' The pagination token that indicates the next set of results to retrieve. '
+          - $ref: '#/components/schemas/ThresholdPercentageInt'
+          - description: The percentage of votes among all members that must be <code>YES</code> for a proposal to be approved. For example, a <code>ThresholdPercentage</code> value of <code>50</code> indicates 50%. The <code>ThresholdComparator</code> determines the precise comparison. If a <code>ThresholdPercentage</code> value of <code>50</code> is specified on a network with 10 members, along with a <code>ThresholdComparator</code> value of <code>GREATER_THAN</code>, this indicates that 6 <code>YES</code> votes are required for the proposal to be approved.
+        ProposalDurationInHours:
+          allOf:
+          - $ref: '#/components/schemas/ProposalDurationInt'
+          - description: The duration from the time that a proposal is created until it expires. If members cast neither the required number of <code>YES</code> votes to approve the proposal nor the number of <code>NO</code> votes required to reject it before the duration expires, the proposal is <code>EXPIRED</code> and <code>ProposalActions</code> aren't carried out.
+        ThresholdComparator:
+          allOf:
+          - $ref: '#/components/schemas/ThresholdComparator'
+          - description: Determines whether the vote percentage must be greater than the <code>ThresholdPercentage</code> or must be greater than or equal to the <code>ThreholdPercentage</code> to be approved.
+      description: <p>A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of <code>YES</code> votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p> <p>Applies only to Hyperledger Fabric.</p>
+    ResourceNotReadyException: {}
+    NameString:
+      type: string
+      pattern: .*\S.*
+      minLength: 1
+      maxLength: 64
+    InvalidRequestException: {}
     Network:
       type: object
       properties:
@@ -2710,6 +2638,90 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: Network configuration properties.
+    ListProposalVotesOutput:
+      type: object
+      properties:
+        ProposalVotes:
+          allOf:
+          - $ref: '#/components/schemas/ProposalVoteList'
+          - description: ' The list of votes. '
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: ' The pagination token that indicates the next set of results to retrieve. '
+    CreateMemberOutput:
+      type: object
+      properties:
+        MemberId:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the member.
+    ListMembersOutput:
+      type: object
+      properties:
+        Members:
+          allOf:
+          - $ref: '#/components/schemas/MemberSummaryList'
+          - description: An array of <code>MemberSummary</code> objects. Each object contains details about a network member.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The pagination token that indicates the next set of results to retrieve.
+    OutputTagMap:
+      type: object
+      minProperties: 0
+      maxProperties: 200
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
+    NodeSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/NodeSummary'
+    NetworkSummary:
+      type: object
+      properties:
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/ResourceIdString'
+          - description: The unique identifier of the network.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/NameString'
+          - description: The name of the network.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/DescriptionString'
+          - description: An optional description of the network.
+        Framework:
+          allOf:
+          - $ref: '#/components/schemas/Framework'
+          - description: The blockchain framework that the network uses.
+        FrameworkVersion:
+          allOf:
+          - $ref: '#/components/schemas/FrameworkVersionString'
+          - description: The version of the blockchain framework that the network uses.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/NetworkStatus'
+          - description: The current status of the network.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time that the network was created.
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/ArnString'
+          - description: The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
+      description: A summary of network configuration properties.
+    UpdateMemberOutput:
+      type: object
+      properties: {}
+    InputTagMap:
+      type: object
+      minProperties: 0
+      maxProperties: 50
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
     LogConfigurations:
       type: object
       properties:
@@ -2718,18 +2730,6 @@ components:
           - $ref: '#/components/schemas/LogConfiguration'
           - description: Parameters for publishing logs to Amazon CloudWatch Logs.
       description: A collection of log configurations.
-    NodeFabricAttributes:
-      type: object
-      properties:
-        PeerEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The endpoint that identifies the peer node for all services except peer channel-based event services.
-        PeerEventEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The endpoint that identifies the peer node for peer channel-based event services.
-      description: Attributes of Hyperledger Fabric for a peer node on a Hyperledger Fabric network on Managed Blockchain.
   parameters:
     X-Amz-Signature:
       name: X-Amz-Signature
@@ -2737,26 +2737,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -2767,8 +2749,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

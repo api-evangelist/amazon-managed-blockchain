@@ -323,20 +323,8 @@ paths:
       - Tags
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Credential:
       name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -347,14 +335,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -365,30 +359,27 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    ResourceNotFoundException: {}
+    InternalServiceErrorException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
     OutputTagMap:
       type: object
       minProperties: 0
       maxProperties: 200
       additionalProperties:
         $ref: '#/components/schemas/TagValue'
-    InvalidRequestException: {}
-    TagResourceResponse:
-      type: object
-      properties: {}
-    TagKey:
-      type: string
-      minLength: 1
-      maxLength: 128
-    InternalServiceErrorException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    ResourceNotFoundException: {}
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
+    ResourceNotReadyException: {}
+    TooManyTagsException: {}
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -396,8 +387,17 @@ components:
           allOf:
           - $ref: '#/components/schemas/OutputTagMap'
           - description: The tags assigned to the resource.
-    TooManyTagsException: {}
-    ResourceNotReadyException: {}
+    TagKey:
+      type: string
+      minLength: 1
+      maxLength: 128
+    InvalidRequestException: {}
+    TagResourceResponse:
+      type: object
+      properties: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
   securitySchemes:
     hmac:
       type: apiKey
