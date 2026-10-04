@@ -275,12 +275,56 @@ paths:
       tags:
       - Invitations
 components:
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    Timestamp:
-      type: string
-      format: date-time
-    InvalidRequestException: {}
     ResourceNotFoundException: {}
+    ArnString:
+      type: string
+      pattern: ^arn:.+:.+:.+:.+:.+
+      minLength: 1
+      maxLength: 1011
     NetworkSummary:
       type: object
       properties:
@@ -317,43 +361,6 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: A summary of network configuration properties.
-    Framework:
-      type: string
-      enum:
-      - HYPERLEDGER_FABRIC
-      - ETHEREUM
-    PaginationToken:
-      type: string
-      maxLength: 128
-    ThrottlingException: {}
-    ListInvitationsOutput:
-      type: object
-      properties:
-        Invitations:
-          allOf:
-          - $ref: '#/components/schemas/InvitationList'
-          - description: The invitations for the network.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The pagination token that indicates the next set of results to retrieve.
-    NetworkStatus:
-      type: string
-      enum:
-      - CREATING
-      - AVAILABLE
-      - CREATE_FAILED
-      - DELETING
-      - DELETED
-    InternalServiceErrorException: {}
-    InvitationList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Invitation'
-    RejectInvitationOutput:
-      type: object
-      properties: {}
-    IllegalActionException: {}
     Invitation:
       type: object
       properties:
@@ -380,7 +387,51 @@ components:
           - $ref: '#/components/schemas/ArnString'
           - description: The Amazon Resource Name (ARN) of the invitation. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General Reference</i>.
       description: <p>An invitation to an Amazon Web Services account to create a member and join the network.</p> <p>Applies only to Hyperledger Fabric.</p>
+    InvalidRequestException: {}
     ResourceLimitExceededException: {}
+    NameString:
+      type: string
+      pattern: .*\S.*
+      minLength: 1
+      maxLength: 64
+    ListInvitationsOutput:
+      type: object
+      properties:
+        Invitations:
+          allOf:
+          - $ref: '#/components/schemas/InvitationList'
+          - description: The invitations for the network.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The pagination token that indicates the next set of results to retrieve.
+    InvitationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Invitation'
+    AccessDeniedException: {}
+    DescriptionString:
+      type: string
+      maxLength: 128
+    Timestamp:
+      type: string
+      format: date-time
+    RejectInvitationOutput:
+      type: object
+      properties: {}
+    IllegalActionException: {}
+    ResourceIdString:
+      type: string
+      minLength: 1
+      maxLength: 32
+    NetworkStatus:
+      type: string
+      enum:
+      - CREATING
+      - AVAILABLE
+      - CREATE_FAILED
+      - DELETING
+      - DELETED
     InvitationStatus:
       type: string
       enum:
@@ -389,71 +440,20 @@ components:
       - ACCEPTING
       - REJECTED
       - EXPIRED
-    ArnString:
+    Framework:
       type: string
-      pattern: ^arn:.+:.+:.+:.+:.+
-      minLength: 1
-      maxLength: 1011
-    AccessDeniedException: {}
-    NameString:
-      type: string
-      pattern: .*\S.*
-      minLength: 1
-      maxLength: 64
-    ResourceIdString:
-      type: string
-      minLength: 1
-      maxLength: 32
-    DescriptionString:
+      enum:
+      - HYPERLEDGER_FABRIC
+      - ETHEREUM
+    PaginationToken:
       type: string
       maxLength: 128
+    InternalServiceErrorException: {}
+    ThrottlingException: {}
     FrameworkVersionString:
       type: string
       minLength: 1
       maxLength: 8
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey
