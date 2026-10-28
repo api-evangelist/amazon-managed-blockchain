@@ -1,4 +1,4 @@
-# Amazon Managed Blockchain (amazon-managed-blockchain)
+# Amazon Managed Blockchain
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,130 +66,244 @@
 
 Amazon Managed Blockchain is a fully managed service that allows you to create and manage scalable blockchain networks using popular open-source frameworks such as Hyperledger Fabric and Ethereum. It eliminates the overhead required to create the network or join a public network, and automatically scales to meet the demands of thousands of applications running millions of transactions.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/apis.yml)
+**Areas:** AWS · Blockchain · Distributed Ledger · Hyperledger Fabric · Ethereum
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Amazon Managed Blockchain on APIs.io
 
-## Tags:
+Everything profiled for Amazon Managed Blockchain is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-managed-blockchain/](https://apis.io/providers/amazon-managed-blockchain/)** — or go straight to one of the APIs or properties below.
 
- - AWS, Blockchain, Distributed Ledger, Hyperledger Fabric, Ethereum
+### APIs (4)
 
-## Timestamps
+- [Amazon Managed Blockchain Accessors API](https://apis.io/apis/amazon-managed-blockchain/amazon-managed-blockchain-accessors-api/) — The Accessors API from Amazon Managed Blockchain — 2 operation(s) for accessors.
+- [Amazon Managed Blockchain Invitations API](https://apis.io/apis/amazon-managed-blockchain/amazon-managed-blockchain-invitations-api/) — The Invitations API from Amazon Managed Blockchain — 2 operation(s) for invitations.
+- [Amazon Managed Blockchain Networks API](https://apis.io/apis/amazon-managed-blockchain/amazon-managed-blockchain-networks-api/) — The Networks API from Amazon Managed Blockchain — 9 operation(s) for networks.
+- [Amazon Managed Blockchain Tags API](https://apis.io/apis/amazon-managed-blockchain/amazon-managed-blockchain-tags-api/) — The Tags API from Amazon Managed Blockchain — 2 operation(s) for tags.
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Amazon Managed Blockchain API
-The Amazon Managed Blockchain API provides a fully managed service for creating and managing scalable blockchain networks using open-source frameworks such as Hyperledger Fabric and Ethereum. Covers 27 operations for networks, members, nodes, proposals, invitations, and accessors management.
+#### Agentic access (1)
 
-**Human URL:** [https://aws.amazon.com/managed-blockchain/](https://aws.amazon.com/managed-blockchain/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Amazon Managed Blockchain Agentic Access](https://apis.io/agentic-access/amazon-managed-blockchain/amazon-managed-blockchain-agentic-access/)
 
- - Blockchain, Distributed Ledger, Hyperledger Fabric, Ethereum
+#### JSON Schema (153)
 
-#### Properties
+The data models the API reads and writes.
 
+- [AccessDeniedException](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-access-denied-exception/)
+- [Accessor](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor/)
+- [AccessorBillingTokenString](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-billing-token-string/)
+- [AccessorListMaxResults](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-list-max-results/)
+- [AccessorStatus](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-status/)
+- [AccessorSummary](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary/)
+- [AccessorSummaryList](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary-list/)
+- [AccessorType](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-accessor-type/)
+- [ApprovalThresholdPolicy](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-approval-threshold-policy/)
+- [ArnString](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-arn-string/)
+- [AvailabilityZoneString](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-availability-zone-string/)
+- [ClientRequestTokenString](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-client-request-token-string/)
+- [CreateAccessorInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-input/)
+- [CreateAccessorOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-output/)
+- [CreateMemberInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-member-input/)
+- [CreateMemberOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-member-output/)
+- [CreateNetworkInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-network-input/)
+- [CreateNetworkOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-network-output/)
+- [CreateNodeInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-node-input/)
+- [CreateNodeOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-node-output/)
+- [CreateProposalInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-input/)
+- [CreateProposalOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-output/)
+- [DeleteAccessorInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-input/)
+- [DeleteAccessorOutput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-output/)
+- [DeleteMemberInput](https://apis.io/schemas/amazon-managed-blockchain/amazon-managed-blockchain-delete-member-input/)
+- …and 128 more published on APIs.io
+
+#### JSON Structure (153)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Managed Blockchain Access Denied Exception Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-access-denied-exception-structure/)
+- [Amazon Managed Blockchain Accessor Billing Token String Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-billing-token-string-structure/)
+- [Amazon Managed Blockchain Accessor List Max Results Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-list-max-results-structure/)
+- [Amazon Managed Blockchain Accessor Status Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-status-structure/)
+- [Amazon Managed Blockchain Accessor Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-structure/)
+- [Amazon Managed Blockchain Accessor Summary List Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary-list-structure/)
+- [Amazon Managed Blockchain Accessor Summary Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary-structure/)
+- [Amazon Managed Blockchain Accessor Type Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-accessor-type-structure/)
+- [Amazon Managed Blockchain Approval Threshold Policy Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-approval-threshold-policy-structure/)
+- [Amazon Managed Blockchain Arn String Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-arn-string-structure/)
+- [Amazon Managed Blockchain Availability Zone String Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-availability-zone-string-structure/)
+- [Amazon Managed Blockchain Client Request Token String Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-client-request-token-string-structure/)
+- [Amazon Managed Blockchain Create Accessor Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-input-structure/)
+- [Amazon Managed Blockchain Create Accessor Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-output-structure/)
+- [Amazon Managed Blockchain Create Member Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-member-input-structure/)
+- [Amazon Managed Blockchain Create Member Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-member-output-structure/)
+- [Amazon Managed Blockchain Create Network Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-network-input-structure/)
+- [Amazon Managed Blockchain Create Network Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-network-output-structure/)
+- [Amazon Managed Blockchain Create Node Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-node-input-structure/)
+- [Amazon Managed Blockchain Create Node Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-node-output-structure/)
+- [Amazon Managed Blockchain Create Proposal Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-input-structure/)
+- [Amazon Managed Blockchain Create Proposal Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-output-structure/)
+- [Amazon Managed Blockchain Delete Accessor Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-input-structure/)
+- [Amazon Managed Blockchain Delete Accessor Output Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-output-structure/)
+- [Amazon Managed Blockchain Delete Member Input Structure](https://apis.io/json-structure/amazon-managed-blockchain/amazon-managed-blockchain-delete-member-input-structure/)
+- …and 128 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Managed Blockchain Context](https://apis.io/jsonld/amazon-managed-blockchain/amazon-managed-blockchain-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Managed Blockchain Vocabulary](https://apis.io/vocabularies/amazon-managed-blockchain/amazon-managed-blockchain-vocabulary/)
+
+#### Examples (153)
+
+Example requests and responses.
+
+- [Amazon Managed Blockchain Access Denied Exception Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-access-denied-exception-example/)
+- [Amazon Managed Blockchain Accessor Billing Token String Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-billing-token-string-example/)
+- [Amazon Managed Blockchain Accessor Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-example/)
+- [Amazon Managed Blockchain Accessor List Max Results Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-list-max-results-example/)
+- [Amazon Managed Blockchain Accessor Status Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-status-example/)
+- [Amazon Managed Blockchain Accessor Summary Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary-example/)
+- [Amazon Managed Blockchain Accessor Summary List Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-summary-list-example/)
+- [Amazon Managed Blockchain Accessor Type Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-accessor-type-example/)
+- [Amazon Managed Blockchain Approval Threshold Policy Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-approval-threshold-policy-example/)
+- [Amazon Managed Blockchain Arn String Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-arn-string-example/)
+- [Amazon Managed Blockchain Availability Zone String Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-availability-zone-string-example/)
+- [Amazon Managed Blockchain Client Request Token String Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-client-request-token-string-example/)
+- [Amazon Managed Blockchain Create Accessor Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-input-example/)
+- [Amazon Managed Blockchain Create Accessor Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-accessor-output-example/)
+- [Amazon Managed Blockchain Create Member Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-member-input-example/)
+- [Amazon Managed Blockchain Create Member Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-member-output-example/)
+- [Amazon Managed Blockchain Create Network Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-network-input-example/)
+- [Amazon Managed Blockchain Create Network Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-network-output-example/)
+- [Amazon Managed Blockchain Create Node Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-node-input-example/)
+- [Amazon Managed Blockchain Create Node Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-node-output-example/)
+- [Amazon Managed Blockchain Create Proposal Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-input-example/)
+- [Amazon Managed Blockchain Create Proposal Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-create-proposal-output-example/)
+- [Amazon Managed Blockchain Delete Accessor Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-input-example/)
+- [Amazon Managed Blockchain Delete Accessor Output Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-delete-accessor-output-example/)
+- [Amazon Managed Blockchain Delete Member Input Example](https://apis.io/examples/amazon-managed-blockchain/amazon-managed-blockchain-delete-member-input-example/)
+- …and 128 more published on APIs.io
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Amazon Managed Blockchain Accessors API](https://apis.io/collections/amazon-managed-blockchain/open-amazon-managed-blockchain-accessors-api/)
+- [Amazon Managed Blockchain Accessors Invitations API](https://apis.io/collections/amazon-managed-blockchain/open-amazon-managed-blockchain-invitations-api/)
+- [Amazon Managed Blockchain Accessors Networks API](https://apis.io/collections/amazon-managed-blockchain/open-amazon-managed-blockchain-networks-api/)
+- [Amazon Managed Blockchain Accessors Tags API](https://apis.io/collections/amazon-managed-blockchain/open-amazon-managed-blockchain-tags-api/)
+- [Amazon Managed Blockchain Accessors API](https://apis.io/collections/amazon-managed-blockchain/postman-amazon-managed-blockchain-accessors-api/)
+- [Amazon Managed Blockchain Accessors Invitations API](https://apis.io/collections/amazon-managed-blockchain/postman-amazon-managed-blockchain-invitations-api/)
+- [Amazon Managed Blockchain Accessors Networks API](https://apis.io/collections/amazon-managed-blockchain/postman-amazon-managed-blockchain-networks-api/)
+- [Amazon Managed Blockchain Accessors Tags API](https://apis.io/collections/amazon-managed-blockchain/postman-amazon-managed-blockchain-tags-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Managed Blockchain — jsonschema rules](https://apis.io/rules/amazon-managed-blockchain/amazon-managed-blockchain-jsonschema-spectral-rules/)
+- [Amazon Managed Blockchain API Rules](https://apis.io/rules/amazon-managed-blockchain/amazon-managed-blockchain-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Managed Blockchain Authentication](https://apis.io/security/amazon-managed-blockchain/amazon-managed-blockchain-authentication/)
+- [Amazon Managed Blockchain Domain Security](https://apis.io/security/amazon-managed-blockchain/amazon-managed-blockchain-domain-security/)
+- [Amazon Managed Blockchain Trust Center](https://apis.io/security/amazon-managed-blockchain/amazon-managed-blockchain-trust-center/)
+- [Amazon Managed Blockchain Vulnerability Disclosure](https://apis.io/security/amazon-managed-blockchain/amazon-managed-blockchain-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Managed Blockchain Plans Pricing](https://apis.io/plans/amazon-managed-blockchain/amazon-managed-blockchain-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Managed Blockchain Rate Limits](https://apis.io/rate-limits/amazon-managed-blockchain/amazon-managed-blockchain-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Managed Blockchain Finops](https://apis.io/finops/amazon-managed-blockchain/amazon-managed-blockchain-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/managed-blockchain/)
 - [Documentation](https://docs.aws.amazon.com/managed-blockchain/)
-- [OpenAPI](openapi/amazon-managed-blockchain-openapi-original.yaml)
-- [GettingStarted](https://aws.amazon.com/managed-blockchain/getting-started/)
-- [Pricing](https://aws.amazon.com/managed-blockchain/pricing/)
-- [FAQ](https://aws.amazon.com/managed-blockchain/faqs/)
-
-## Common Properties
-
-- [Portal](https://aws.amazon.com/managed-blockchain/)
-- [Documentation](https://docs.aws.amazon.com/managed-blockchain/)
-- [TermsOfService](https://aws.amazon.com/service-terms/)
-- [PrivacyPolicy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/premiumsupport/)
-- [GitHubOrganization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/managedblockchain/)
-- [SignUp](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [StatusPage](https://health.aws.amazon.com/health/status)
-- [Contact](https://aws.amazon.com/contact-us/)
-- [SpectralRules](rules/amazon-managed-blockchain-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-managed-blockchain-vocabulary.yaml)
-- [NaftikoCapability](capabilities/blockchain-network-operations.yaml)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Hyperledger Fabric Support | Create permissioned blockchain networks using Hyperledger Fabric framework. |
-| Ethereum Support | Create and participate in public Ethereum networks. |
-| Network Member Management | Invite AWS accounts to join your network as members and manage their access. |
-| Peer Node Management | Create and manage peer nodes to participate in blockchain network transactions. |
-| Proposal and Voting | Create and vote on proposals to manage network configuration changes. |
+**Kin Score 55.1** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 63.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 56.0 |
+| Access clarity | 53.9 |
 
-| Name | Description |
-|------|-------------|
-| Supply Chain Transparency | Track products through supply chains with immutable blockchain records shared across organizations. |
-| Financial Settlement | Automate financial settlement processes with smart contracts on Hyperledger Fabric. |
-| Healthcare Data Sharing | Share patient data securely across healthcare providers using blockchain consent records. |
-| Digital Asset Management | Manage digital assets and NFTs on Ethereum through a fully managed blockchain service. |
+**Agent readiness 34.1** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Amazon S3 | Store blockchain application code and configuration in S3 buckets. |
-| AWS KMS | Encrypt blockchain network data using AWS Key Management Service. |
-| Amazon CloudWatch | Monitor blockchain node and network metrics in CloudWatch. |
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-managed-blockchain/](https://apis.io/providers/amazon-managed-blockchain/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Amazon Managed Blockchain OpenAPI](openapi/amazon-managed-blockchain-openapi-original.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Managed Blockchain: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-153 schema files available in the [json-schema/](json-schema/) directory.
-
-### JSON Structure
-
-153 structure files available in the [json-structure/](json-structure/) directory.
-
-### JSON-LD
-
-- [Amazon Managed Blockchain Context](json-ld/amazon-managed-blockchain-context.jsonld)
-
-### Examples
-
-153 example files available in the [examples/](examples/) directory.
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Amazon Managed Blockchain](capabilities/shared/managed-blockchain.yaml) — 6 operations for network, member, and node management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Blockchain Network Operations](capabilities/blockchain-network-operations.yaml) | Amazon Managed Blockchain | 6 | Blockchain Architect, Blockchain Developer |
-
-## Vocabulary
-
-- [Amazon Managed Blockchain Vocabulary](vocabulary/amazon-managed-blockchain-vocabulary.yaml) — Unified taxonomy mapping 6 resources, 6 actions, 1 workflow, and 2 personas
-
-## Rules
-
-- [Amazon Managed Blockchain Spectral Rules](rules/amazon-managed-blockchain-spectral-rules.yml) — 18 rules across 7 categories
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-managed-blockchain/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
