@@ -1,0 +1,237 @@
+aid: amazon-managed-blockchain
+name: Amazon Managed Blockchain
+description: Amazon Managed Blockchain is a fully managed service that allows you to create and manage
+  scalable blockchain networks using popular open-source frameworks such as Hyperledger Fabric and Ethereum.
+  It eliminates the overhead required to create the network or join a public network, and automatically
+  scales to meet the demands of thousands of applications running millions of transactions.
+type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-managed-blockchain.png
+tags:
+- Amazon Web Services
+- Blockchain
+- Distributed Ledger
+- Hyperledger Fabric
+- Ethereum
+tags_raw:
+- AWS
+- Blockchain
+- Distributed Ledger
+- Hyperledger Fabric
+- Ethereum
+url: https://raw.githubusercontent.com/api-evangelist/amazon-managed-blockchain/refs/heads/main/apis.yml
+created: '2024-01-15'
+modified: '2026-09-16'
+specificationVersion: '0.23'
+apis:
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-accessors-api
+  name: Amazon Managed Blockchain Accessors API
+  description: The Accessors API from Amazon Managed Blockchain — 2 operation(s) for accessors.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Accessors
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-accessors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-invitations-api
+  name: Amazon Managed Blockchain Invitations API
+  description: The Invitations API from Amazon Managed Blockchain — 2 operation(s) for invitations.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Invitations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-invitations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-networks-api
+  name: Amazon Managed Blockchain Networks API
+  description: The Networks API from Amazon Managed Blockchain — 9 operation(s) for networks.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-networks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+- aid: amazon-managed-blockchain:amazon-managed-blockchain-tags-api
+  name: Amazon Managed Blockchain Tags API
+  description: The Tags API from Amazon Managed Blockchain — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/managed-blockchain/
+  baseURL: https://managedblockchain.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-managed-blockchain-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/managed-blockchain/
+  - type: GettingStarted
+    url: https://aws.amazon.com/managed-blockchain/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/managed-blockchain/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/managed-blockchain/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-managed-blockchain-network-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-managed-blockchain-context.jsonld
+common:
+- type: CapabilityMap
+  url: capabilities/amazon-managed-blockchain-capability-edges.yml
+  name: Amazon Managed Blockchain Business Capability Map
+- type: Plans
+  url: plans/amazon-managed-blockchain-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-managed-blockchain-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-managed-blockchain-finops.yml
+- type: Website
+  url: https://aws.amazon.com/managed-blockchain/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-managed-blockchain/overview
+- type: AgenticAccess
+  url: agentic-access/amazon-managed-blockchain-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-managed-blockchain-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-managed-blockchain-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-managed-blockchain-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-managed-blockchain-authentication.yml
+- type: Portal
+  url: https://aws.amazon.com/managed-blockchain/
+- type: Documentation
+  url: https://docs.aws.amazon.com/managed-blockchain/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Support
+  url: https://aws.amazon.com/premiumsupport/
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Console
+  url: https://console.aws.amazon.com/managedblockchain/
+- type: Signup
+  url: https://portal.aws.amazon.com/billing/signup
+- type: Login
+  url: https://signin.aws.amazon.com/
+- type: StatusPage
+  url: https://health.aws.amazon.com/health/status
+- type: Contact
+  url: https://aws.amazon.com/contact-us/
+- type: SpectralRules
+  url: rules/amazon-managed-blockchain-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-managed-blockchain-vocabulary.yaml
+- type: Features
+  data:
+  - name: Hyperledger Fabric Support
+    description: Create permissioned blockchain networks using Hyperledger Fabric framework.
+  - name: Ethereum Support
+    description: Create and participate in public Ethereum networks.
+  - name: Network Member Management
+    description: Invite AWS accounts to join your network as members and manage their access.
+  - name: Peer Node Management
+    description: Create and manage peer nodes to participate in blockchain network transactions.
+  - name: Proposal and Voting
+    description: Create and vote on proposals to manage network configuration changes.
+- type: UseCases
+  data:
+  - name: Supply Chain Transparency
+    description: Track products through supply chains with immutable blockchain records shared across
+      organizations.
+  - name: Financial Settlement
+    description: Automate financial settlement processes with smart contracts on Hyperledger Fabric.
+  - name: Healthcare Data Sharing
+    description: Share patient data securely across healthcare providers using blockchain consent records.
+  - name: Digital Asset Management
+    description: Manage digital assets and NFTs on Ethereum through a fully managed blockchain service.
+- type: Integrations
+  data:
+  - name: Amazon S3
+    description: Store blockchain application code and configuration in S3 buckets.
+  - name: AWS KMS
+    description: Encrypt blockchain network data using AWS Key Management Service.
+  - name: Amazon CloudWatch
+    description: Monitor blockchain node and network metrics in CloudWatch.
+- type: Integrations
+  url: https://aws.amazon.com/marketplace
+integrations:
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-parent: amazon-web-services
+x-relationship: product

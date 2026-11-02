@@ -1,0 +1,106 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/managed-blockchain/pricing/
+sources:
+- https://aws.amazon.com/managed-blockchain/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Starter Edition
+published: true
+note: The rate tables render via dynamic pricing tokens ({priceOf!...}) so no actual per-hour, per-GB
+  or per-request rates are visible in the page text; the only numeric prices are those in the two worked
+  pricing examples ($16, $5, $7, $9 per million calls, totals $176.10 and $202).
+plan_count: 5
+currency: USD
+plans:
+- name: AMB Access Bitcoin - Large API tier (pricing example, US East N. Virginia)
+  price_text: $16
+  price: 16
+  currency: USD
+  period: per-use
+  unit: per million requests
+- name: AMB Access Bitcoin - Extra Small API tier (pricing example)
+  price_text: $5
+  price: 5
+  currency: USD
+  period: per-use
+  unit: per million requests
+- name: AMB Query - Small API tier (pricing example)
+  price_text: $7
+  price: 7
+  currency: USD
+  period: per-use
+  unit: per million requests
+- name: AMB Query - Medium API tier (pricing example)
+  price_text: $9
+  price: 9
+  currency: USD
+  period: per-use
+  unit: per million requests
+- name: AMB Access Polygon (preview)
+  price_text: free of charge
+  period: none
+rate_limit_statements:
+- You pay per second for the blockchain peer nodes that you create, with a 1-minute minimum.
+- You are charged for each request accrued in increments of 32 KB of data exchanged or 500 ms response
+  time, whichever comes first.
+- Maximum members per network 5 14
+- Maximum peer nodes per member 2 3
+- Maximum channels per network 8 8
+- There are no subscriptions, no minimum quotas, and no overage charges.
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - request
+  plans:
+  - name: AMB Access Bitcoin - Large API tier (pricing example, US East N. Virginia)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: AMB Access Bitcoin - Extra Small API tier (pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: AMB Query - Small API tier (pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: AMB Query - Medium API tier (pricing example)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: AMB Access Polygon (preview)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
