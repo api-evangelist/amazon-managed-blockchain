@@ -2,6 +2,7 @@
 generated: '2026-10-28'
 method: searched
 source: https://aws.amazon.com/managed-blockchain/pricing/
+name: Amazon Managed Blockchain API Plans
 sources:
 - https://aws.amazon.com/managed-blockchain/pricing/
 provenance:
@@ -58,7 +59,7 @@ rate_limit_statements:
 - Maximum channels per network 8 8
 - There are no subscriptions, no minimum quotas, and no overage charges.
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid

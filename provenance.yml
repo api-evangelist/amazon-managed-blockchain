@@ -5,12 +5,27 @@ artifacts:
   agentic-access/amazon-managed-blockchain-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-managed-blockchain-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   authentication/amazon-managed-blockchain-authentication.yml:
     method: derived
     evidence: declared in the artifact
   capabilities/amazon-managed-blockchain-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/amazon-managed-blockchain-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
+  cli/amazon-managed-blockchain-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-managed-blockchain-accessors-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-managed-blockchain-accessors-api
@@ -35,6 +50,21 @@ artifacts:
   collections/amazon-managed-blockchain-tags-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-managed-blockchain-tags-api
+  conformance/amazon-managed-blockchain-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-managed-blockchain-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-managed-blockchain-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  eligibility/amazon-managed-blockchain-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
+  errors/amazon-managed-blockchain-problem-types.yml:
+    method: searched
+    evidence: declared in the artifact
   examples/amazon-managed-blockchain-access-denied-exception-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -500,6 +530,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-managed-blockchain-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -638,6 +671,9 @@ artifacts:
   json-schema/amazon-managed-blockchain-get-proposal-output-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-get-transaction-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/amazon-managed-blockchain-illegal-action-exception-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -675,6 +711,12 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-managed-blockchain-list-accessors-output-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-list-asset-contracts-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-list-filtered-transaction-events-input-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-managed-blockchain-list-invitations-input-schema.json:
@@ -717,6 +759,15 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-managed-blockchain-list-tags-for-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-list-token-balances-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-list-transaction-events-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-managed-blockchain-list-transactions-input-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/amazon-managed-blockchain-log-configuration-schema.json:
@@ -1430,7 +1481,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -1499,22 +1550,42 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-managed-blockchain-openapi-original.yaml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-managed-blockchain-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-managed-blockchain-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-managed-blockchain-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-managed-blockchain-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/amazon-managed-blockchain-accessors-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-managed-blockchain-invitations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-managed-blockchain-networks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-managed-blockchain-operations-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-managed-blockchain-tags-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  packages/amazon-managed-blockchain-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-managed-blockchain-patterns.yml:
     method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    evidence: declared in the artifact
   plans/amazon-managed-blockchain-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -1530,10 +1601,19 @@ artifacts:
   postman/amazon-managed-blockchain-tags-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-managed-blockchain-tags-api
+  privacy/amazon-managed-blockchain-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/amazon-managed-blockchain-rate-limits.yml:
+    method: searched
+    evidence: declared in the artifact
+  regulatory/amazon-managed-blockchain-regulatory-posture.yml:
+    method: unknown
+    evidence: no authorship recorded
+  rules/amazon-managed-blockchain-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
-  rules/amazon-managed-blockchain-jsonschema-spectral-rules.yml:
+  rules/amazon-managed-blockchain-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-managed-blockchain-spectral-rules.yml:
@@ -1548,12 +1628,44 @@ artifacts:
   security/amazon-managed-blockchain-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-managed-blockchain-provision-fabric-node.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-managed-blockchain-query-token-balances.md:
+    method: generated
+    evidence: declared in the artifact
   sla/amazon-managed-blockchain-sla.yml:
     method: generated
     evidence: declared in the artifact
   smithy/managedblockchain-2018-09-24.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/managedblockchain/service/2018-09-24/managedblockchain-2018-09-24.json
+      (sha256 caae8219d1ce, fetched 2026-11-11T21:12:19+00:00)
+  smithy/managedblockchain-query-2023-05-04.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/managedblockchain-query/service/2023-05-04/managedblockchain-query-2023-05-04.json
+      (sha256 5081986c95b9, fetched 2026-11-11T21:12:20+00:00)
+  terms/amazon-managed-blockchain-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-managed-blockchain-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-managed-blockchain-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-managed-blockchain-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-managed-blockchain-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-managed-blockchain-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-managed-blockchain-well-known.yml:
     method: unknown
     evidence: no authorship recorded
