@@ -1481,7 +1481,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-06T143934.yml:
+  kin/checks-2026-11-13T214628.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -1551,6 +1551,9 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-13T214628.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/amazon-managed-blockchain-lifecycle.yml:
@@ -1635,9 +1638,6 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   skills/amazon-managed-blockchain-query-token-balances.md:
-    method: generated
-    evidence: declared in the artifact
-  sla/amazon-managed-blockchain-sla.yml:
     method: generated
     evidence: declared in the artifact
   smithy/managedblockchain-2018-09-24.json:
